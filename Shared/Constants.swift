@@ -71,5 +71,8 @@ enum Settings {
         for key in [Key.hasOnboarded, Key.pollMinutes, Key.alertThreshold] {
             defaults.removeObject(forKey: key)
         }
+        // The prompt's launch counter and schedule are data about the user too,
+        // and the privacy policy says this button clears everything.
+        SupportPromptState.reset()
     }
 }

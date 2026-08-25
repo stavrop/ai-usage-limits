@@ -2,22 +2,21 @@ import Foundation
 
 /// Outbound links.
 ///
-/// NOTE: the GitHub repo below does not exist yet — the iOS app needs its own,
-/// separate from the macOS menu bar app's repo (that one is a submodule of this
-/// monorepo, so nesting iOS inside it would make the monorepo contain ios/
-/// twice). Create `stavrop/ai-usage-limits` before shipping publicly.
+/// The app has its own public repo, separate from the macOS menu bar app's: that
+/// one is a submodule of the private monorepo, so nesting iOS inside it would
+/// carry the iOS sources twice.
 enum Links {
     static let github = URL(string: "https://github.com/stavrop/ai-usage-limits")!
     static let bug = URL(string: "https://github.com/stavrop/ai-usage-limits/issues/new?labels=bug&template=bug_report.yml")!
     static let feature = URL(string: "https://github.com/stavrop/ai-usage-limits/issues/new?labels=enhancement&template=feature_request.yml")!
     static let coffee = URL(string: "https://buymeacoffee.com/stavrop")!
 
-    /// Shared with the macOS app's GitHub Pages site. It currently describes the
-    /// macOS app's behaviour (reading local credential files) — it needs an iOS
-    /// section covering the OAuth sign-in and Keychain storage before the App
-    /// Store listing points at it.
-    static let privacy = URL(string: "https://stavrop.github.io/ai-usage-monitor/privacy.html")!
-    static let terms = URL(string: "https://stavrop.github.io/ai-usage-monitor/terms.html")!
+    /// This app's own policy and terms. Deliberately NOT the macOS app's pages —
+    /// those describe reading credential files the user's desktop CLIs already
+    /// wrote, which is not how this app works. Source lives in PRIVACY.md /
+    /// TERMS.md; `docs/build.py` regenerates the hosted HTML.
+    static let privacy = URL(string: "https://stavrop.github.io/ai-usage-limits/privacy.html")!
+    static let terms = URL(string: "https://stavrop.github.io/ai-usage-limits/terms.html")!
 }
 
 extension Bundle {
