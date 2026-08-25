@@ -92,6 +92,35 @@ enough to read usage, **not** enough to send prompts or spend your allowance.
 Claude's access token lasts ~8h; the refresh chain lasts ~29 days and is
 **absolute, not sliding**, so a full re-login is due roughly monthly.
 
+## Onboarding
+
+First launch shows three pages — what the app does, how credentials are handled,
+then the provider list — and **does not** force a sign-in. Finishing with nothing
+connected is supported: the dashboard has an empty state and Settings can add
+providers at any time.
+
+## App structure
+
+A three-tab bar: **Home** (the provider dashboard), **Settings** (connect /
+disconnect providers, refresh cadence, alert threshold, delete all data) and
+**About** (version, support and feedback links, privacy policy, terms, and a
+"Privacy & connections" screen detailing exactly what each provider is asked for).
+
+`App/About/Links.swift` holds every outbound URL.
+
+The support prompt first appears once the app has proved useful — a provider
+connected and at least four cold launches — then at most once a month on a
+jittered 25–40 day schedule. Tapping through to a support link defers the next
+ask by roughly a year.
+
+## Deleting your data
+
+**Settings → Delete all data** clears every provider credential from the Keychain
+(including a sweep for items written by older builds), every cached reading, the
+prompt schedule and all preferences — then resets onboarding so the next launch
+starts fresh. Individual providers can be disconnected from their own row. Nothing
+is ever sent off-device, so this erases everything the app holds.
+
 ## Widgets
 
 | Widget | Shows |
@@ -150,6 +179,18 @@ case — onboarding, Settings, the dashboard and the widgets all enumerate the
 registry. Three auth styles are supported: `.oauth` (loopback PKCE),
 `.browserPoll` (approve in the browser, then poll — Cursor has no redirect to
 catch) and `.apiKey`.
+
+## Notes
+
+- **Keychain on Simulator**: access groups behave differently there (no real team
+  prefix), so they're omitted under `targetEnvironment(simulator)`. Credential
+  sharing between app and widget is only meaningful on a real device.
+- **Widget refresh cadence**: iOS throttles timelines; the 30-minute request in
+  `timeline(for:in:)` is a hint, not a guarantee.
+- **Identifiers**: app `com.stavrop.ailimits`, widget `com.stavrop.ailimits.widget`,
+  App Group `group.com.stavrop.ailimits`, Keychain access group
+  `<TeamID>.com.stavrop.ailimits.shared`, Keychain service `AIUsageLimits`, widget
+  kinds `AIUsageLimitsWidget` / `AIUsageLimitsProviderWidget`.
 
 ## Support this project
 
