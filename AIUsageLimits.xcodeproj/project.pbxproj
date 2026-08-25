@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0BAF95E24295AC0F7359F58E /* ProviderConnectRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C705768D120E7BD53FC873 /* ProviderConnectRow.swift */; };
+		0F7D446AA7B48A3DCE0D83DF /* SupportPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEFDB3CDD607EA26451D936 /* SupportPrompt.swift */; };
+		125D1E1DD1CEF1A77FAE18A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CA856A067277DF9D1B298 /* Constants.swift */; };
+		14E80172C77E6B6C32111A43 /* OpenRouterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDD9C7C7137778B1D65D82 /* OpenRouterProvider.swift */; };
+		1FAB2A96A786A5D6F6E431F0 /* UsageWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2945B1097D249A2CA396C55 /* UsageWidget.swift */; };
+		2002D438DD8692B499B23EB9 /* CursorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA1D815FC1FED6C9BAEB06B /* CursorProvider.swift */; };
+		222223266D5D4B09A70772CC /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65918BD9C421E1E757350187 /* CredentialStore.swift */; };
+		227F6F452C29FB93146EDDE0 /* UsageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089469D1C7FF90CAA87B85E1 /* UsageProvider.swift */; };
+		34839E64800F9340E76C1E47 /* OpenAIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0B210CC4708F23F5619061 /* OpenAIProvider.swift */; };
+		36CC6689CBE03EB8012CD372 /* UsageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A0C91C7E81858B1DB4726 /* UsageModels.swift */; };
+		39756AEBE33B48B4E550E825 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F71033E10538BE7692176EC /* Links.swift */; };
+		3F93288F0462331C69755243 /* UsageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8A0C91C7E81858B1DB4726 /* UsageModels.swift */; };
+		472D2F25B6A3B67D7447687B /* GrokProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A56259CB032D4CC964B07 /* GrokProvider.swift */; };
+		47405B5F72BF05943DA0AD48 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1C74C3E88FA3290BEA3A2B /* OnboardingView.swift */; };
+		48C5C416890DF2B7A1CF36E3 /* GrokProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E1A56259CB032D4CC964B07 /* GrokProvider.swift */; };
+		4FD0F701145F380E6DF86A50 /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984336640184004DD3FB71CA /* RootTabView.swift */; };
+		504A49655AB21CCB332C7BF8 /* ProviderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D82C24CB625B1B7D00698D1 /* ProviderCard.swift */; };
+		53B1F035EF07505D5E7D0513 /* ProviderSelectionIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973C422FBA4D9AC67493B00 /* ProviderSelectionIntent.swift */; };
+		54DAEDF567D16EE65AA31DD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02D0807D3ED48D0EF4D6BB80 /* ContentView.swift */; };
+		55004EE94B2211967431988F /* UsageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDB2BF9D3157F5AB62AAECF2 /* UsageStore.swift */; };
+		58BE0225D0ADB518887104FA /* UsageWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 713C36571E145FC5AD821C18 /* UsageWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5BB970F82665814CD934D3AD /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B99DA56E0FC2DB42244463 /* DashboardView.swift */; };
+		63BF7291A78C8017B19DAAF1 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B318AF10C3E5AB0AFB6C6B /* OAuthClient.swift */; };
+		6BE21637F71E69EFC5D6DE9A /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B318AF10C3E5AB0AFB6C6B /* OAuthClient.swift */; };
+		6C028ACEDB7204A5A30487B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CA856A067277DF9D1B298 /* Constants.swift */; };
+		6EC27C55A04186BB32B9199D /* JSONFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A36BF4AB5ED03316B655A /* JSONFetch.swift */; };
+		77ED9EDD086BDA70A3866D41 /* APIKeyEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4488BE0CB595849B07A974A /* APIKeyEntryView.swift */; };
+		7DABD099F2DD6FAB4FC24B29 /* AnthropicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDD5F68F84346BE52C50278 /* AnthropicProvider.swift */; };
+		89D9DBE93F96F0348CB632DD /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65918BD9C421E1E757350187 /* CredentialStore.swift */; };
+		91193CD08221A18744A2A0CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8280B3203ECD094C9D29DB55 /* Assets.xcassets */; };
+		93607A31EC2AB8321A0DC2E0 /* LoopbackServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535EB8947EF175C0A47FA1B /* LoopbackServer.swift */; };
+		93E15D8C7DF9323594B940D7 /* JSONFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A36BF4AB5ED03316B655A /* JSONFetch.swift */; };
+		9584868EE68CD662F9521FF8 /* CursorProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA1D815FC1FED6C9BAEB06B /* CursorProvider.swift */; };
+		9D1EB9B84E5A61474F43EB08 /* OpenRouterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DDD9C7C7137778B1D65D82 /* OpenRouterProvider.swift */; };
+		A7A8BB3A0FD5F061F6B7E3B4 /* ProviderConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB95C5A097E64189A7C9E6CC /* ProviderConnector.swift */; };
+		B0E757C80EDC4E882125FCFC /* LoopbackServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2535EB8947EF175C0A47FA1B /* LoopbackServer.swift */; };
+		C04FBE162854F90C76F3DE5C /* AuthenticationNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76BAAB350C81A65E0F0F6B2 /* AuthenticationNotesView.swift */; };
+		C05498D1A04EAAD586E9EBEF /* OpenAIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0B210CC4708F23F5619061 /* OpenAIProvider.swift */; };
+		CE203C81C4F6CB6FAF49FCCA /* AnthropicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDD5F68F84346BE52C50278 /* AnthropicProvider.swift */; };
+		D142B84C21432875D9FC89AC /* WidgetShared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421328271AFCAAD31718AA91 /* WidgetShared.swift */; };
+		D82DBDA4528D195A72FF3726 /* ProviderSelectionIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2973C422FBA4D9AC67493B00 /* ProviderSelectionIntent.swift */; };
+		DD003410F5BAD9FCDA979189 /* AIUsageLimitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EC0AA5BC3EED61D3CFED83 /* AIUsageLimitsApp.swift */; };
+		DF79C91D88A706EF241AFD37 /* UsageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089469D1C7FF90CAA87B85E1 /* UsageProvider.swift */; };
+		F3AB815908AB23B7AD08820E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F84F3C52382538B756D9F6B /* AboutView.swift */; };
+		F7FFA950886C2F916A524B39 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5937CD34F9FFF6F7F0B81AAC /* SettingsView.swift */; };
+		F82A246FC46CB889411F177C /* ProviderWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB44FBEE1D6C30AFFF12243 /* ProviderWidget.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		824D81BC26AA4B85B6C90ED2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 21B91EA6ABA5DEF60265E2EA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E10285CD0448022D042DD518;
+			remoteInfo = UsageWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		037270EF329FF31EC4F24C6B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				58BE0225D0ADB518887104FA /* UsageWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		02D0807D3ED48D0EF4D6BB80 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		089469D1C7FF90CAA87B85E1 /* UsageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageProvider.swift; sourceTree = "<group>"; };
+		090CA856A067277DF9D1B298 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0D82C24CB625B1B7D00698D1 /* ProviderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCard.swift; sourceTree = "<group>"; };
+		18B99DA56E0FC2DB42244463 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		18DDD9C7C7137778B1D65D82 /* OpenRouterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRouterProvider.swift; sourceTree = "<group>"; };
+		195A36BF4AB5ED03316B655A /* JSONFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONFetch.swift; sourceTree = "<group>"; };
+		1A8A0C91C7E81858B1DB4726 /* UsageModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageModels.swift; sourceTree = "<group>"; };
+		1D1C74C3E88FA3290BEA3A2B /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		1F71033E10538BE7692176EC /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
+		21C705768D120E7BD53FC873 /* ProviderConnectRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnectRow.swift; sourceTree = "<group>"; };
+		2535EB8947EF175C0A47FA1B /* LoopbackServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopbackServer.swift; sourceTree = "<group>"; };
+		2973C422FBA4D9AC67493B00 /* ProviderSelectionIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderSelectionIntent.swift; sourceTree = "<group>"; };
+		2D69EF0DD6FD841DCB1961FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3BEFDB3CDD607EA26451D936 /* SupportPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPrompt.swift; sourceTree = "<group>"; };
+		421328271AFCAAD31718AA91 /* WidgetShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetShared.swift; sourceTree = "<group>"; };
+		4C285E900EABD9A59029F634 /* AIUsageLimits.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AIUsageLimits.entitlements; sourceTree = "<group>"; };
+		5937CD34F9FFF6F7F0B81AAC /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		59F9DAC2B035B15EC95250BD /* AIUsageLimits.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AIUsageLimits.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E1A56259CB032D4CC964B07 /* GrokProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrokProvider.swift; sourceTree = "<group>"; };
+		5EDF796D13DFCEE5F6614CBC /* UsageWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UsageWidget.entitlements; sourceTree = "<group>"; };
+		5F84F3C52382538B756D9F6B /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		65918BD9C421E1E757350187 /* CredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
+		713C36571E145FC5AD821C18 /* UsageWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = UsageWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FB44FBEE1D6C30AFFF12243 /* ProviderWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderWidget.swift; sourceTree = "<group>"; };
+		8280B3203ECD094C9D29DB55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		87B318AF10C3E5AB0AFB6C6B /* OAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthClient.swift; sourceTree = "<group>"; };
+		984336640184004DD3FB71CA /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		9FDD5F68F84346BE52C50278 /* AnthropicProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnthropicProvider.swift; sourceTree = "<group>"; };
+		A76BAAB350C81A65E0F0F6B2 /* AuthenticationNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNotesView.swift; sourceTree = "<group>"; };
+		A8BA4BB09864972A7D52F702 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AEA1D815FC1FED6C9BAEB06B /* CursorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorProvider.swift; sourceTree = "<group>"; };
+		B4488BE0CB595849B07A974A /* APIKeyEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyEntryView.swift; sourceTree = "<group>"; };
+		CDB2BF9D3157F5AB62AAECF2 /* UsageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageStore.swift; sourceTree = "<group>"; };
+		D2945B1097D249A2CA396C55 /* UsageWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageWidget.swift; sourceTree = "<group>"; };
+		D6EC0AA5BC3EED61D3CFED83 /* AIUsageLimitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIUsageLimitsApp.swift; sourceTree = "<group>"; };
+		DA0B210CC4708F23F5619061 /* OpenAIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProvider.swift; sourceTree = "<group>"; };
+		FB95C5A097E64189A7C9E6CC /* ProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnector.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		06558370665743079CFD0350 /* Connect */ = {
+			isa = PBXGroup;
+			children = (
+				B4488BE0CB595849B07A974A /* APIKeyEntryView.swift */,
+				FB95C5A097E64189A7C9E6CC /* ProviderConnector.swift */,
+				21C705768D120E7BD53FC873 /* ProviderConnectRow.swift */,
+			);
+			path = Connect;
+			sourceTree = "<group>";
+		};
+		0816B7C883A70E8EA4F3FF5D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				5937CD34F9FFF6F7F0B81AAC /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		09FC7787D87D9E1E7D0DFB29 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				9FDD5F68F84346BE52C50278 /* AnthropicProvider.swift */,
+				65918BD9C421E1E757350187 /* CredentialStore.swift */,
+				AEA1D815FC1FED6C9BAEB06B /* CursorProvider.swift */,
+				5E1A56259CB032D4CC964B07 /* GrokProvider.swift */,
+				195A36BF4AB5ED03316B655A /* JSONFetch.swift */,
+				87B318AF10C3E5AB0AFB6C6B /* OAuthClient.swift */,
+				DA0B210CC4708F23F5619061 /* OpenAIProvider.swift */,
+				18DDD9C7C7137778B1D65D82 /* OpenRouterProvider.swift */,
+				2973C422FBA4D9AC67493B00 /* ProviderSelectionIntent.swift */,
+				1A8A0C91C7E81858B1DB4726 /* UsageModels.swift */,
+				089469D1C7FF90CAA87B85E1 /* UsageProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
+		1D3A51039D2B66496D0CB1C7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				090CA856A067277DF9D1B298 /* Constants.swift */,
+				2535EB8947EF175C0A47FA1B /* LoopbackServer.swift */,
+				09FC7787D87D9E1E7D0DFB29 /* Providers */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		361B390FFF9A83109FE97665 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				1D1C74C3E88FA3290BEA3A2B /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		3CAF980BEA98B47D25E12428 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				A8BA4BB09864972A7D52F702 /* Info.plist */,
+				7FB44FBEE1D6C30AFFF12243 /* ProviderWidget.swift */,
+				5EDF796D13DFCEE5F6614CBC /* UsageWidget.entitlements */,
+				D2945B1097D249A2CA396C55 /* UsageWidget.swift */,
+				421328271AFCAAD31718AA91 /* WidgetShared.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		3D1102C30FAD1CBEBB3EB04E /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				18B99DA56E0FC2DB42244463 /* DashboardView.swift */,
+				0D82C24CB625B1B7D00698D1 /* ProviderCard.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		3F731BEBE7001306813D9F09 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				59F9DAC2B035B15EC95250BD /* AIUsageLimits.app */,
+				713C36571E145FC5AD821C18 /* UsageWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5EA62E99FF270480214AD901 = {
+			isa = PBXGroup;
+			children = (
+				7F7DE7AD0B7DEBD53AEA8633 /* App */,
+				1D3A51039D2B66496D0CB1C7 /* Shared */,
+				3CAF980BEA98B47D25E12428 /* Widget */,
+				3F731BEBE7001306813D9F09 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7F7DE7AD0B7DEBD53AEA8633 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				4C285E900EABD9A59029F634 /* AIUsageLimits.entitlements */,
+				D6EC0AA5BC3EED61D3CFED83 /* AIUsageLimitsApp.swift */,
+				8280B3203ECD094C9D29DB55 /* Assets.xcassets */,
+				02D0807D3ED48D0EF4D6BB80 /* ContentView.swift */,
+				2D69EF0DD6FD841DCB1961FF /* Info.plist */,
+				984336640184004DD3FB71CA /* RootTabView.swift */,
+				CDB2BF9D3157F5AB62AAECF2 /* UsageStore.swift */,
+				C9083FA1CAB1E5562B49791F /* About */,
+				06558370665743079CFD0350 /* Connect */,
+				3D1102C30FAD1CBEBB3EB04E /* Dashboard */,
+				361B390FFF9A83109FE97665 /* Onboarding */,
+				0816B7C883A70E8EA4F3FF5D /* Settings */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C9083FA1CAB1E5562B49791F /* About */ = {
+			isa = PBXGroup;
+			children = (
+				5F84F3C52382538B756D9F6B /* AboutView.swift */,
+				A76BAAB350C81A65E0F0F6B2 /* AuthenticationNotesView.swift */,
+				1F71033E10538BE7692176EC /* Links.swift */,
+				3BEFDB3CDD607EA26451D936 /* SupportPrompt.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		798F9F6A545773049A19F0A3 /* AIUsageLimits */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC4886ACE508E230CEF7E2CB /* Build configuration list for PBXNativeTarget "AIUsageLimits" */;
+			buildPhases = (
+				069056659513742327B90AB6 /* Sources */,
+				B3D306EE3F61B3612574286F /* Resources */,
+				037270EF329FF31EC4F24C6B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				02E22D1E8C11F138513242C6 /* PBXTargetDependency */,
+			);
+			name = AIUsageLimits;
+			packageProductDependencies = (
+			);
+			productName = AIUsageLimits;
+			productReference = 59F9DAC2B035B15EC95250BD /* AIUsageLimits.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E10285CD0448022D042DD518 /* UsageWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2BD9844202C43BEF7730AD77 /* Build configuration list for PBXNativeTarget "UsageWidgetExtension" */;
+			buildPhases = (
+				DD5C706E1E944808FA99CB2A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UsageWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = UsageWidgetExtension;
+			productReference = 713C36571E145FC5AD821C18 /* UsageWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		21B91EA6ABA5DEF60265E2EA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					798F9F6A545773049A19F0A3 = {
+						DevelopmentTeam = NCZ7646BF7;
+						ProvisioningStyle = Automatic;
+					};
+					E10285CD0448022D042DD518 = {
+						DevelopmentTeam = NCZ7646BF7;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E39628B80401BCEB2984D342 /* Build configuration list for PBXProject "AIUsageLimits" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 5EA62E99FF270480214AD901;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 3F731BEBE7001306813D9F09 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				798F9F6A545773049A19F0A3 /* AIUsageLimits */,
+				E10285CD0448022D042DD518 /* UsageWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B3D306EE3F61B3612574286F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91193CD08221A18744A2A0CA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		069056659513742327B90AB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD003410F5BAD9FCDA979189 /* AIUsageLimitsApp.swift in Sources */,
+				77ED9EDD086BDA70A3866D41 /* APIKeyEntryView.swift in Sources */,
+				F3AB815908AB23B7AD08820E /* AboutView.swift in Sources */,
+				7DABD099F2DD6FAB4FC24B29 /* AnthropicProvider.swift in Sources */,
+				C04FBE162854F90C76F3DE5C /* AuthenticationNotesView.swift in Sources */,
+				6C028ACEDB7204A5A30487B7 /* Constants.swift in Sources */,
+				54DAEDF567D16EE65AA31DD8 /* ContentView.swift in Sources */,
+				222223266D5D4B09A70772CC /* CredentialStore.swift in Sources */,
+				9584868EE68CD662F9521FF8 /* CursorProvider.swift in Sources */,
+				5BB970F82665814CD934D3AD /* DashboardView.swift in Sources */,
+				472D2F25B6A3B67D7447687B /* GrokProvider.swift in Sources */,
+				6EC27C55A04186BB32B9199D /* JSONFetch.swift in Sources */,
+				39756AEBE33B48B4E550E825 /* Links.swift in Sources */,
+				93607A31EC2AB8321A0DC2E0 /* LoopbackServer.swift in Sources */,
+				6BE21637F71E69EFC5D6DE9A /* OAuthClient.swift in Sources */,
+				47405B5F72BF05943DA0AD48 /* OnboardingView.swift in Sources */,
+				C05498D1A04EAAD586E9EBEF /* OpenAIProvider.swift in Sources */,
+				9D1EB9B84E5A61474F43EB08 /* OpenRouterProvider.swift in Sources */,
+				504A49655AB21CCB332C7BF8 /* ProviderCard.swift in Sources */,
+				0BAF95E24295AC0F7359F58E /* ProviderConnectRow.swift in Sources */,
+				A7A8BB3A0FD5F061F6B7E3B4 /* ProviderConnector.swift in Sources */,
+				D82DBDA4528D195A72FF3726 /* ProviderSelectionIntent.swift in Sources */,
+				4FD0F701145F380E6DF86A50 /* RootTabView.swift in Sources */,
+				F7FFA950886C2F916A524B39 /* SettingsView.swift in Sources */,
+				0F7D446AA7B48A3DCE0D83DF /* SupportPrompt.swift in Sources */,
+				36CC6689CBE03EB8012CD372 /* UsageModels.swift in Sources */,
+				DF79C91D88A706EF241AFD37 /* UsageProvider.swift in Sources */,
+				55004EE94B2211967431988F /* UsageStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD5C706E1E944808FA99CB2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE203C81C4F6CB6FAF49FCCA /* AnthropicProvider.swift in Sources */,
+				125D1E1DD1CEF1A77FAE18A9 /* Constants.swift in Sources */,
+				89D9DBE93F96F0348CB632DD /* CredentialStore.swift in Sources */,
+				2002D438DD8692B499B23EB9 /* CursorProvider.swift in Sources */,
+				48C5C416890DF2B7A1CF36E3 /* GrokProvider.swift in Sources */,
+				93E15D8C7DF9323594B940D7 /* JSONFetch.swift in Sources */,
+				B0E757C80EDC4E882125FCFC /* LoopbackServer.swift in Sources */,
+				63BF7291A78C8017B19DAAF1 /* OAuthClient.swift in Sources */,
+				34839E64800F9340E76C1E47 /* OpenAIProvider.swift in Sources */,
+				14E80172C77E6B6C32111A43 /* OpenRouterProvider.swift in Sources */,
+				53B1F035EF07505D5E7D0513 /* ProviderSelectionIntent.swift in Sources */,
+				F82A246FC46CB889411F177C /* ProviderWidget.swift in Sources */,
+				3F93288F0462331C69755243 /* UsageModels.swift in Sources */,
+				227F6F452C29FB93146EDDE0 /* UsageProvider.swift in Sources */,
+				1FAB2A96A786A5D6F6E431F0 /* UsageWidget.swift in Sources */,
+				D142B84C21432875D9FC89AC /* WidgetShared.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		02E22D1E8C11F138513242C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E10285CD0448022D042DD518 /* UsageWidgetExtension */;
+			targetProxy = 824D81BC26AA4B85B6C90ED2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07E9A2484D38A5133F984762 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/UsageWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "AI Usage Limits";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.stavrop.ailimits.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		430BF587322DCB4522113921 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/UsageWidget.entitlements;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "AI Usage Limits";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.stavrop.ailimits.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B1A89CE7F376BDE481B5CDDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/AIUsageLimits.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.stavrop.ailimits;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B2F9398142EC03E5F8CE2BE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = App/AIUsageLimits.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.stavrop.ailimits;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C01D024705DAD82CE7584091 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = NCZ7646BF7;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.3.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F42A9161AEC91C2A2B792FA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = NCZ7646BF7;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 0.3.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2BD9844202C43BEF7730AD77 /* Build configuration list for PBXNativeTarget "UsageWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07E9A2484D38A5133F984762 /* Debug */,
+				430BF587322DCB4522113921 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DC4886ACE508E230CEF7E2CB /* Build configuration list for PBXNativeTarget "AIUsageLimits" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B2F9398142EC03E5F8CE2BE7 /* Debug */,
+				B1A89CE7F376BDE481B5CDDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E39628B80401BCEB2984D342 /* Build configuration list for PBXProject "AIUsageLimits" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01D024705DAD82CE7584091 /* Debug */,
+				F42A9161AEC91C2A2B792FA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 21B91EA6ABA5DEF60265E2EA /* Project object */;
+}

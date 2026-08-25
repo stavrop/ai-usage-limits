@@ -1,0 +1,44 @@
+name: Bug report
+description: Something isn't working
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this.
+
+        **Please don't paste tokens, API keys or screenshots that show them.**
+        Nothing in this app needs a credential to reproduce a bug.
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: Shown at the top of the About tab.
+      placeholder: "0.3.0 (202608251019)"
+    validations:
+      required: true
+  - type: input
+    id: ios
+    attributes:
+      label: iOS version and device
+      placeholder: "iOS 26.0, iPhone 16 Pro"
+    validations:
+      required: true
+  - type: dropdown
+    id: provider
+    attributes:
+      label: Which provider?
+      options: [Claude, ChatGPT, Grok, Cursor, OpenRouter, Not provider-specific]
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce

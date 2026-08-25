@@ -1,0 +1,25 @@
+# Build artifacts
+build/
+DerivedData/
+*.xcarchive
+*.ipa
+*.dSYM/
+
+# Xcode user state (the .xcodeproj itself IS committed — see README)
+*.xcuserstate
+xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+.swiftpm/
+
+# macOS
+.DS_Store
+
+# Secrets — never commit tokens, keys or profiles
+*.p8
+*.p12
+*.mobileprovision
+*.certSigningRequest
+.env
+.env.*
+ExportOptions*.plist
