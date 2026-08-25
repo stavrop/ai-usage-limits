@@ -2,6 +2,9 @@
 
 **AI Usage Limits** (iOS) — last updated 2026-08-25
 
+> Hosted version: <https://stavrop.github.io/ai-usage-limits/privacy.html>
+> (This Markdown file is the source; run `python3 docs/build.py` after editing.)
+
 **Short version: this app has no servers and collects nothing.** Everything happens
 on your iPhone. The only services it talks to are the AI providers you choose to
 connect, using your own login with each of them.

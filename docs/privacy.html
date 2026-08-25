@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — AI Usage Limits</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<h1>Privacy Policy</h1>
+<p><strong>AI Usage Limits</strong> (iOS) — last updated 2026-08-25</p>
+<blockquote>Hosted version: <a href="https://stavrop.github.io/ai-usage-limits/privacy.html">https://stavrop.github.io/ai-usage-limits/privacy.html</a></blockquote>
+<blockquote>(This Markdown file is the source; run <code>python3 docs/build.py</code> after editing.)</blockquote>
+<p><strong>Short version: this app has no servers and collects nothing.</strong> Everything happens on your iPhone. The only services it talks to are the AI providers you choose to connect, using your own login with each of them.</p>
+<h2>Scope</h2>
+<p>This policy covers the <strong>AI Usage Limits</strong> iOS app (bundle id <code>com.stavrop.ailimits</code>), distributed via the App Store and TestFlight, with source at <a href="https://github.com/stavrop/ai-usage-limits">https://github.com/stavrop/ai-usage-limits</a>.</p>
+<p>It does <strong>not</strong> cover the separate macOS menu bar app, *AI Usage Monitor*, which has <a href="https://stavrop.github.io/ai-usage-monitor/privacy.html">its own policy</a>. The two apps work differently: the Mac app reads credentials your desktop CLIs already wrote, while this app signs in itself.</p>
+<h2>What the developer collects</h2>
+<p><strong>Nothing.</strong> There is no server operated by the developer, no analytics, no telemetry, no crash reporting, no advertising, no tracking and no account. The developer never receives your credentials or your usage figures, and has no way to.</p>
+<h2>How signing in works</h2>
+<p>You sign in on <strong>each provider&#x27;s own web page</strong>, opened in Apple&#x27;s Safari through <code>ASWebAuthenticationSession</code> — not in a web view inside this app. Your password is typed into the provider, never into AI Usage Limits. The app receives only the token the provider issues after you approve.</p>
+<p>For providers that use an API key (OpenRouter), you paste a key you created in that provider&#x27;s dashboard.</p>
+<p><strong>The approval screen names the provider&#x27;s own command-line tool</strong> — for example &quot;Claude Code&quot; or &quot;Codex&quot; — rather than this app, because the app uses those same public OAuth clients. This is also why the app is unofficial: the providers have not published an API for reading your usage.</p>
+<h2>What is stored, and where</h2>
+<ul>
+<li><strong>Credentials</strong> (OAuth tokens or API keys) are stored in your device&#x27;s</li>
+</ul>
+<p><strong>Keychain</strong>, in a group shared only between this app and its own widget.</p>
+<ul>
+<li><strong>The most recent usage figures</strong> are cached in the app&#x27;s own App Group</li>
+</ul>
+<p>container so the widget can render without a network call.</p>
+<ul>
+<li><strong>Preferences</strong> (refresh interval, alert threshold) are stored the same way.</li>
+</ul>
+<p>None of this leaves your device. There is no iCloud sync and no backup to the developer.</p>
+<h2>What is sent, and to whom</h2>
+<p>Each token is sent <strong>only to the provider it belongs to</strong>, and only to read your usage:</p>
+<table>
+<tr><th>Provider</th><th>Hosts contacted</th></tr>
+<tr><td>Claude</td><td><code>claude.com</code>, <code>platform.claude.com</code>, <code>api.anthropic.com</code></td></tr>
+<tr><td>ChatGPT</td><td><code>auth.openai.com</code>, <code>chatgpt.com</code></td></tr>
+<tr><td>Grok</td><td><code>auth.x.ai</code>, <code>cli-chat-proxy.grok.com</code></td></tr>
+<tr><td>Cursor</td><td><code>cursor.com</code>, <code>api2.cursor.sh</code></td></tr>
+<tr><td>OpenRouter</td><td><code>openrouter.ai</code></td></tr>
+</table>
+<p>There are no other network calls. The app never sends prompts, never runs code, never changes your plan and never spends your allowance.</p>
+<h2>Scopes</h2>
+<p>The app asks each provider for as little as it can. For Claude it requests <code>org:create_api_key user:profile</code>; the provider does not grant the first, so the resulting token carries <code>user:profile</code> only — enough to read usage, and not enough to send prompts. Every provider&#x27;s exact scopes are listed in the app under <strong>About → Privacy &amp; connections</strong>, read directly from the code so the screen cannot disagree with what is actually requested.</p>
+<h2>Deleting your data</h2>
+<p><strong>Settings → Delete all data</strong> removes every stored credential, all cached usage and all preferences from the device, and signs you out of every provider inside the app. Deleting the app removes the same data. Because nothing was ever sent anywhere else, that erases everything the app holds about you.</p>
+<p>To revoke the app&#x27;s access at the provider end, use that provider&#x27;s own account or security settings.</p>
+<h2>Children</h2>
+<p>The app is not directed at children and collects no personal information from anyone.</p>
+<h2>Changes</h2>
+<p>Material changes will be noted in this file and in the repository&#x27;s CHANGELOG.</p>
+<h2>Contact</h2>
+<p>Open an issue at <a href="https://github.com/stavrop/ai-usage-limits/issues">https://github.com/stavrop/ai-usage-limits/issues</a>, or report a security concern privately via <a href="https://github.com/stavrop/ai-usage-limits/security/advisories/new">https://github.com/stavrop/ai-usage-limits/security/advisories/new</a>.</p>
+<footer>
+  <a href="index.html">AI Usage Limits</a> &middot;
+  <a href="https://github.com/stavrop/ai-usage-limits">GitHub</a> &middot;
+  Apache-2.0 &copy; 2026 Georgios Stavropoulos
+</footer>
+</div>
+</body>
+</html>

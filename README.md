@@ -1,5 +1,9 @@
 # AI Usage Limits
 
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-iOS%2017%2B-lightgrey.svg)](#build)
+[![Buy me a coffee](https://img.shields.io/badge/%E2%98%95-buy%20me%20a%20coffee-ffdd00.svg)](https://buymeacoffee.com/stavrop)
+
 See how much of your **Claude**, **ChatGPT**, **Grok**, **Cursor** and
 **OpenRouter** allowance you've used — and when each one resets — without opening
 a single dashboard. iPhone app with configurable Home Screen and Lock Screen
@@ -28,8 +32,10 @@ wrote, while this app signs in itself, because a phone has no `~/.claude` to rea
 usage figures are cached on-device for the widget, and each token is sent only to
 the provider it belongs to. **Settings → Delete all data** erases all of it.
 
-See [PRIVACY.md](PRIVACY.md), and **About → Privacy & connections** in the app for
-the exact scopes each provider is asked for.
+See the [privacy policy](https://stavrop.github.io/ai-usage-limits/privacy.html)
+([source](PRIVACY.md)) and [terms](https://stavrop.github.io/ai-usage-limits/terms.html),
+and **About → Privacy & connections** in the app for the exact scopes each
+provider is asked for.
 
 ## Providers
 
@@ -144,6 +150,18 @@ case — onboarding, Settings, the dashboard and the widgets all enumerate the
 registry. Three auth styles are supported: `.oauth` (loopback PKCE),
 `.browserPoll` (approve in the browser, then poll — Cursor has no redirect to
 catch) and `.apiKey`.
+
+## Support this project
+
+It's free, has no ads, no tracking and no account — and it takes real time to keep
+working, because these endpoints move without warning.
+
+- ☕ **[Buy me a coffee](https://buymeacoffee.com/stavrop)** — the only way this
+  project earns anything.
+- ⭐ **[Star this repo](https://github.com/stavrop/ai-usage-limits)** — free, and
+  it's how other people find it.
+- 🐛 **[Report a bug or request a provider](https://github.com/stavrop/ai-usage-limits/issues)**
+  — especially when a provider breaks. You'll usually notice before I do.
 
 ## License
 
