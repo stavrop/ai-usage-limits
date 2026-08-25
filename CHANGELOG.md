@@ -5,10 +5,12 @@ All notable changes to AI Usage Limits are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.0] - 2026-08-25
 
 ### Added
 - Initial public release of the iOS app.
+- **iPhone only.** The layout targets one-handed phone use and has never been
+  tested on iPad, so claiming iPad support would ship an unverified surface.
 - **Five providers**: Claude and ChatGPT (loopback OAuth), Grok (loopback OAuth),
   Cursor (browser approve + poll) and OpenRouter (API key). Only Claude and
   ChatGPT have been verified end to end; Grok and Cursor are implemented from

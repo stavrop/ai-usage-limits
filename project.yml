@@ -15,8 +15,8 @@ settings:
   base:
     DEVELOPMENT_TEAM: NCZ7646BF7
     SWIFT_VERSION: "5.0"
-    MARKETING_VERSION: "0.3.0"
-    CURRENT_PROJECT_VERSION: "1"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "4"
     CODE_SIGN_STYLE: Automatic
 
 targets:
@@ -29,6 +29,10 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.stavrop.ailimits
+        # iPhone only. The layout targets one-handed phone use and has never been
+        # tested on iPad; claiming iPad support would ship an unverified surface
+        # (and require an App Store screenshot set for it).
+        TARGETED_DEVICE_FAMILY: "1"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: App/Info.plist
@@ -46,6 +50,7 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.stavrop.ailimits.widget
+        TARGETED_DEVICE_FAMILY: "1"
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: Widget/Info.plist
         INFOPLIST_KEY_CFBundleDisplayName: AI Usage Limits
