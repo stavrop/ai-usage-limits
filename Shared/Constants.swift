@@ -28,6 +28,7 @@ enum Settings {
         static let hasOnboarded = "hasOnboarded"
         static let pollMinutes = "pollMinutes"
         static let alertThreshold = "alertThreshold"
+        static let demoMode = "demoMode"
     }
 
     /// Set once the user finishes (or skips past) onboarding.
@@ -43,6 +44,17 @@ enum Settings {
             return stored == 0 ? 10 : min(max(stored, 1), 120)
         }
         set { defaults.set(min(max(newValue, 1), 120), forKey: Key.pollMinutes) }
+    }
+
+    /// Fills the app and its widgets with `DemoData` instead of live readings.
+    ///
+    /// Lives in the App Group so the widget honours it too — a demo that stops
+    /// at the app's edge would show empty widgets next to a populated dashboard.
+    /// Off by default, switched on only from onboarding or Settings, and cleared
+    /// by a full erase.
+    static var demoMode: Bool {
+        get { defaults.bool(forKey: Key.demoMode) }
+        set { defaults.set(newValue, forKey: Key.demoMode) }
     }
 
     /// Percentage at which a bucket is highlighted as nearly spent.
@@ -68,7 +80,7 @@ enum Settings {
     static func eraseEverything() {
         CredentialStore.clearAll()
         UsageCache.clearAll()
-        for key in [Key.hasOnboarded, Key.pollMinutes, Key.alertThreshold] {
+        for key in [Key.hasOnboarded, Key.pollMinutes, Key.alertThreshold, Key.demoMode] {
             defaults.removeObject(forKey: key)
         }
         // The prompt's launch counter and schedule are data about the user too,

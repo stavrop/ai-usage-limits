@@ -9,6 +9,7 @@ struct UsageEntry: TimelineEntry {
     let readings: [ProviderUsage]
     let choice: WidgetProviderChoice
     let stale: Bool
+    var demo = false
 }
 
 struct UsageTimelineProvider: AppIntentTimelineProvider {
@@ -28,6 +29,15 @@ struct UsageTimelineProvider: AppIntentTimelineProvider {
 
     func timeline(for configuration: ProviderSelectionIntent,
                   in context: Context) async -> Timeline<UsageEntry> {
+        // Demo mode is stored in the App Group, so the widget shows the sample
+        // alongside the app rather than an empty "not connected" tile.
+        if Settings.demoMode {
+            let ids = configuration.provider.providerID.map { [$0] } ?? DemoData.providers
+            let entry = UsageEntry(date: Date(),
+                                   readings: WidgetData.demoReadings(for: ids),
+                                   choice: configuration.provider, stale: false, demo: true)
+            return Timeline(entries: [entry], policy: .after(WidgetData.nextRefresh()))
+        }
         let result = await WidgetData.readings(for: Self.providers(for: configuration.provider))
         let entry = UsageEntry(date: Date(), readings: result.readings,
                                choice: configuration.provider, stale: result.stale)
@@ -104,7 +114,8 @@ struct UsageWidgetView: View {
                     }
                 }
             }
-            UpdatedFooter(readings: entry.readings, stale: entry.stale, compact: true)
+            UpdatedFooter(readings: entry.readings, stale: entry.stale,
+                          compact: true, demo: entry.demo)
         }
     }
 
@@ -121,7 +132,7 @@ struct UsageWidgetView: View {
                 }
             }
             Spacer(minLength: 0)
-            UpdatedFooter(readings: entry.readings, stale: entry.stale)
+            UpdatedFooter(readings: entry.readings, stale: entry.stale, demo: entry.demo)
         }
     }
 
@@ -149,7 +160,7 @@ struct UsageWidgetView: View {
                 }
             }
             Spacer(minLength: 0)
-            UpdatedFooter(readings: entry.readings, stale: entry.stale)
+            UpdatedFooter(readings: entry.readings, stale: entry.stale, demo: entry.demo)
         }
     }
 }

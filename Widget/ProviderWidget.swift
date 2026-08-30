@@ -15,6 +15,7 @@ struct ProviderEntry: TimelineEntry {
     let reading: ProviderUsage?
     let provider: ProviderID
     let stale: Bool
+    var demo = false
 }
 
 struct ProviderTimelineProvider: AppIntentTimelineProvider {
@@ -35,6 +36,12 @@ struct ProviderTimelineProvider: AppIntentTimelineProvider {
     func timeline(for configuration: SingleProviderIntent,
                   in context: Context) async -> Timeline<ProviderEntry> {
         let id = configuration.provider.providerID
+        if Settings.demoMode {
+            return Timeline(entries: [ProviderEntry(date: Date(),
+                                                    reading: DemoData.reading(id),
+                                                    provider: id, stale: false, demo: true)],
+                            policy: .after(WidgetData.nextRefresh()))
+        }
         guard CredentialStore.isConnected(id) else {
             return Timeline(entries: [ProviderEntry(date: Date(), reading: nil,
                                                     provider: id, stale: false)],
@@ -92,7 +99,8 @@ struct ProviderWidgetView: View {
                         .monospacedDigit()
                 }
             }
-            UpdatedFooter(readings: [reading], stale: entry.stale, compact: true)
+            UpdatedFooter(readings: [reading], stale: entry.stale,
+                          compact: true, demo: entry.demo)
         }
     }
 
@@ -130,7 +138,7 @@ struct ProviderWidgetView: View {
             }
 
             Spacer(minLength: 0)
-            UpdatedFooter(readings: [reading], stale: entry.stale)
+            UpdatedFooter(readings: [reading], stale: entry.stale, demo: entry.demo)
         }
     }
 

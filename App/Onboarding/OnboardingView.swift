@@ -90,6 +90,18 @@ struct OnboardingView: View {
                 ForEach(ProviderID.displayOrder, id: \.self) { id in
                     ProviderConnectRow(provider: id)
                 }
+
+                // Every provider here is someone else's account, so there is no
+                // way to try the app without signing in to one — unless we hand
+                // over a sample.
+                Button {
+                    store.setDemo(true)
+                    finish()
+                } label: {
+                    Label("Look around with sample data", systemImage: "wand.and.stars")
+                        .font(.subheadline)
+                }
+                .padding(.top, 6)
             }
         }
     }
@@ -106,7 +118,7 @@ struct OnboardingView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
-            } else if store.hasAnyProvider {
+            } else if store.hasAnyProvider || store.isDemo {
                 Button {
                     finish()
                 } label: {

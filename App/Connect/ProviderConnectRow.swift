@@ -12,7 +12,9 @@ struct ProviderConnectRow: View {
     @StateObject private var model = ConnectRowModel()
     @State private var showKeySheet = false
 
-    private var isConnected: Bool { store.connected.contains(provider) }
+    /// Deliberately `realConnected`: while the demo is on, `connected` lists the
+    /// sample providers, and a row must never claim a service is signed in.
+    private var isConnected: Bool { store.realConnected.contains(provider) }
 
     var body: some View {
         HStack(spacing: 14) {

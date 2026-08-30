@@ -5,6 +5,23 @@ All notable changes to AI Usage Limits are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-08-30
+
+### Added
+- **Sample data mode.** Every provider here is an account with another service,
+  so there was no way to see what the app does without signing in to one first.
+  A new demo fills the dashboard and both widgets with fixed, made-up figures —
+  offered on the last onboarding page, from the empty dashboard, and as a toggle
+  in Settings.
+  - Nothing is fetched, nothing is written to the Keychain and nothing is written
+    to the shared usage cache: the readings exist only in memory, so switching
+    the demo off shows the real data exactly as it was left.
+  - Labelled as sample data wherever it appears — a banner above the cards, a
+    "Sample" marker in the widget footer, and a fictional account label.
+  - Connecting a real provider turns it off automatically.
+- Settings rows now track *stored credentials* rather than what is on screen, so
+  the demo can never make a provider look signed in when it isn't.
+
 ## [1.0] - 2026-08-25
 
 ### Added

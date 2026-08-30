@@ -28,30 +28,34 @@ enum WidgetData {
     /// ~30 min is a hint; iOS throttles widget timelines as it sees fit.
     static func nextRefresh() -> Date { Date().addingTimeInterval(30 * 60) }
 
-    static let sample = ProviderUsage(
-        provider: .anthropic,
-        buckets: [
-            Bucket(id: "five_hour", label: "Session", subtitle: "5-hour window",
-                   percent: 24, resetsAt: Date().addingTimeInterval(3600 * 3)),
-            Bucket(id: "seven_day", label: "Weekly", subtitle: "7-day",
-                   percent: 20, resetsAt: Date().addingTimeInterval(3600 * 72)),
-        ],
-        credits: nil, accountLabel: nil, fetchedAt: Date())
+    /// Placeholder shown in the widget gallery, before any real reading exists.
+    static var sample: ProviderUsage { DemoData.reading(.anthropic) }
+
+    /// Sample readings for demo mode, honouring the widget's provider choice.
+    static func demoReadings(for providers: [ProviderID]) -> [ProviderUsage] {
+        DemoData.readings(for: providers.isEmpty ? DemoData.providers : providers)
+    }
 }
 
 /// "Updated 12:48" — or "Updated 12:48 · stale" when every fetch failed and we're
 /// showing the cache, so an old number is never mistaken for a fresh one.
+///
+/// In demo mode it leads with "Sample": a widget sits on the Home Screen with no
+/// surrounding chrome, so it has to carry that label itself.
 struct UpdatedFooter: View {
     let readings: [ProviderUsage]
     let stale: Bool
     var compact = false
+    var demo = false
 
     private var timestamp: Date? { readings.map(\.fetchedAt).max() }
 
     var body: some View {
         if let timestamp {
             HStack(spacing: 3) {
-                if stale {
+                if demo {
+                    Text("Sample ·").foregroundStyle(.purple)
+                } else if stale {
                     Image(systemName: "exclamationmark.triangle.fill")
                         .font(.system(size: 8))
                 }

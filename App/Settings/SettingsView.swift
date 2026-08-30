@@ -6,6 +6,7 @@ struct SettingsView: View {
     @State private var pollMinutes = Settings.pollMinutes
     @State private var alertThreshold = Settings.alertThreshold
     @State private var confirmErase = false
+    @State private var demoMode = Settings.demoMode
 
     var body: some View {
         NavigationStack {
@@ -22,6 +23,18 @@ struct SettingsView: View {
                 } footer: {
                     Text("Connect as many as you use. Each one is stored separately, "
                        + "so disconnecting one never affects the others.")
+                }
+
+                Section {
+                    Toggle("Show sample data", isOn: $demoMode)
+                        .onChange(of: demoMode) { _, on in store.setDemo(on) }
+                } header: {
+                    Text("Demo")
+                } footer: {
+                    Text("Fills the app and its widgets with made-up figures so you "
+                       + "can see how everything looks without connecting an "
+                       + "account. Nothing is fetched and nothing is stored; "
+                       + "connecting a real provider switches it off.")
                 }
 
                 Section("Refresh") {
@@ -75,6 +88,7 @@ struct SettingsView: View {
                    + "this device. This can't be undone — you'll need to connect your "
                    + "providers again.")
             }
+            .onChange(of: store.isDemo) { _, on in demoMode = on }
             .navigationTitle("Settings")
         }
     }

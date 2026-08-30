@@ -13,26 +13,72 @@ final class UsageStore: ObservableObject {
     @Published private(set) var usage: [ProviderID: ProviderUsage] = [:]
     @Published private(set) var errors: [ProviderID: ProviderError] = [:]
     @Published private(set) var refreshing: Set<ProviderID> = []
+    /// What the dashboard and widgets show — the demo's providers while it is on,
+    /// the genuinely connected ones otherwise.
     @Published private(set) var connected: [ProviderID] = []
+    /// Providers with credentials actually stored on this device. Settings rows
+    /// read this, so the demo never makes a service look signed in when it isn't.
+    @Published private(set) var realConnected: [ProviderID] = []
+    @Published private(set) var isDemo = Settings.demoMode
 
     init() {
-        usage = UsageCache.loadAll()
-        connected = CredentialStore.connectedProviders
+        realConnected = CredentialStore.connectedProviders
+        if isDemo {
+            connected = DemoData.providers
+            usage = DemoData.readingsByProvider()
+        } else {
+            usage = UsageCache.loadAll()
+            connected = realConnected
+        }
     }
 
-    var hasAnyProvider: Bool { !connected.isEmpty }
+    /// True only for real connections — the support prompt and onboarding's
+    /// "Done" button must not be fooled by sample data.
+    var hasAnyProvider: Bool { !realConnected.isEmpty }
 
     var isRefreshing: Bool { !refreshing.isEmpty }
 
     func reloadConnections() {
-        connected = CredentialStore.connectedProviders
+        realConnected = CredentialStore.connectedProviders
+        guard !isDemo else {
+            connected = DemoData.providers
+            return
+        }
+        connected = realConnected
         // Drop readings and errors for anything disconnected while we were away.
         usage = usage.filter { connected.contains($0.key) }
         errors = errors.filter { connected.contains($0.key) }
     }
 
+    /// Turns the sample-data demo on or off.
+    ///
+    /// Demo readings are built in memory and never written to `UsageCache`, so
+    /// switching back shows the real cache exactly as it was left.
+    func setDemo(_ on: Bool) {
+        Settings.demoMode = on
+        isDemo = on
+        errors = [:]
+        realConnected = CredentialStore.connectedProviders
+        if on {
+            connected = DemoData.providers
+            usage = DemoData.readingsByProvider()
+        } else {
+            connected = realConnected
+            usage = UsageCache.loadAll().filter { connected.contains($0.key) }
+        }
+        WidgetCenter.shared.reloadAllTimelines()
+    }
+
     /// Refreshes every connected provider concurrently.
     func refreshAll() async {
+        guard !isDemo else {
+            // Re-date the sample so its reset countdowns keep moving; a demo
+            // whose "resets in 2h" never changes looks broken.
+            usage = DemoData.readingsByProvider()
+            realConnected = CredentialStore.connectedProviders
+            WidgetCenter.shared.reloadAllTimelines()
+            return
+        }
         reloadConnections()
         await withTaskGroup(of: Void.self) { group in
             for id in connected {
@@ -44,6 +90,10 @@ final class UsageStore: ObservableObject {
 
     /// Refreshes one provider, leaving the last good reading in place on failure.
     func refresh(_ id: ProviderID) async {
+        guard !isDemo else {
+            usage[id] = DemoData.reading(id)
+            return
+        }
         guard !refreshing.contains(id) else { return }
         refreshing.insert(id)
         defer { refreshing.remove(id) }
@@ -67,6 +117,8 @@ final class UsageStore: ObservableObject {
 
     func disconnect(_ id: ProviderID) {
         Settings.forget(id)
+        realConnected.removeAll { $0 == id }
+        guard !isDemo else { return }
         usage[id] = nil
         errors[id] = nil
         connected.removeAll { $0 == id }
@@ -77,9 +129,11 @@ final class UsageStore: ObservableObject {
     /// `ContentView` observes `onErased` to send the user back to onboarding.
     func eraseEverything() {
         Settings.eraseEverything()
+        isDemo = false
         usage = [:]
         errors = [:]
         connected = []
+        realConnected = []
         WidgetCenter.shared.reloadAllTimelines()
         onErased?()
     }
@@ -88,7 +142,11 @@ final class UsageStore: ObservableObject {
     var onErased: (() -> Void)?
 
     /// Called after a successful connect.
+    ///
+    /// A real connection ends the demo: once there is something genuine to show,
+    /// leaving sample cards alongside it would be misleading.
     func didConnect(_ id: ProviderID) async {
+        if isDemo { setDemo(false) }
         reloadConnections()
         await refresh(id)
         WidgetCenter.shared.reloadAllTimelines()
