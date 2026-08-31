@@ -28,6 +28,19 @@ enum DemoData {
         Dictionary(uniqueKeysWithValues: providers.map { ($0, reading($0, now: now)) })
     }
 
+    /// The next boundary of a repeating window, in absolute time.
+    ///
+    /// Reset times are *not* "now plus a fixed offset": that pins the countdown,
+    /// so every refresh would snap "resets in 2h 36m" back to the same value
+    /// after the user had watched it tick down. Anchoring to the window's own
+    /// cycle instead means the sample counts down continuously and rolls over on
+    /// its own, identically in the app and in the widget, with nothing stored.
+    private static func nextReset(everyHours: Double, now: Date) -> Date {
+        let window = everyHours * 3600
+        let elapsed = now.timeIntervalSince1970
+        return Date(timeIntervalSince1970: (floor(elapsed / window) + 1) * window)
+    }
+
     /// One provider's sample reading.
     ///
     /// The buckets mirror the shape each service really returns — Claude's
@@ -36,7 +49,7 @@ enum DemoData {
     /// window at all — so the demo shows the layout the user will actually get.
     /// The numbers are chosen to span the green/amber/red ramp.
     static func reading(_ provider: ProviderID, now: Date = Date()) -> ProviderUsage {
-        func at(hours: Double) -> Date { now.addingTimeInterval(hours * 3600) }
+        func at(everyHours: Double) -> Date { nextReset(everyHours: everyHours, now: now) }
 
         switch provider {
         case .anthropic:
@@ -44,9 +57,9 @@ enum DemoData {
                 provider: provider,
                 buckets: [
                     Bucket(id: "five_hour", label: "Session", subtitle: "5-hour window",
-                           percent: 43, resetsAt: at(hours: 2.6)),
+                           percent: 43, resetsAt: at(everyHours: 5)),
                     Bucket(id: "seven_day", label: "Weekly", subtitle: "7-day",
-                           percent: 68, resetsAt: at(hours: 74)),
+                           percent: 68, resetsAt: at(everyHours: 24 * 7)),
                 ],
                 credits: CreditInfo(used: 4.20, limit: 25, remaining: nil,
                                     currency: "USD", note: nil),
@@ -58,9 +71,9 @@ enum DemoData {
                 provider: provider,
                 buckets: [
                     Bucket(id: "primary", label: "Messages", subtitle: "3-hour window",
-                           percent: 88, resetsAt: at(hours: 1.2)),
+                           percent: 88, resetsAt: at(everyHours: 3)),
                     Bucket(id: "secondary", label: "Weekly", subtitle: "7-day",
-                           percent: 52, resetsAt: at(hours: 96)),
+                           percent: 52, resetsAt: at(everyHours: 24 * 7)),
                 ],
                 credits: nil,
                 accountLabel: accountLabel,
@@ -71,7 +84,7 @@ enum DemoData {
                 provider: provider,
                 buckets: [
                     Bucket(id: "credits", label: "Credits", subtitle: "current period",
-                           percent: 31, resetsAt: at(hours: 210)),
+                           percent: 31, resetsAt: at(everyHours: 24 * 30)),
                 ],
                 credits: CreditInfo(used: 6.20, limit: 20, remaining: nil,
                                     currency: "USD", note: nil),
@@ -83,7 +96,7 @@ enum DemoData {
                 provider: provider,
                 buckets: [
                     Bucket(id: "requests", label: "Requests", subtitle: "monthly plan",
-                           percent: 74, resetsAt: at(hours: 260)),
+                           percent: 74, resetsAt: at(everyHours: 24 * 28)),
                 ],
                 credits: nil,
                 accountLabel: accountLabel,

@@ -6,7 +6,6 @@ struct SettingsView: View {
     @State private var pollMinutes = Settings.pollMinutes
     @State private var alertThreshold = Settings.alertThreshold
     @State private var confirmErase = false
-    @State private var demoMode = Settings.demoMode
 
     var body: some View {
         NavigationStack {
@@ -26,8 +25,13 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    Toggle("Show sample data", isOn: $demoMode)
-                        .onChange(of: demoMode) { _, on in store.setDemo(on) }
+                    // Bound straight to the store: the demo can also be switched
+                    // off from the dashboard banner, by connecting a provider or
+                    // by an erase, and a mirrored @State would echo each of those
+                    // back into setDemo — which clears `errors` as a side effect.
+                    Toggle("Show sample data", isOn: Binding(
+                        get: { store.isDemo },
+                        set: { store.setDemo($0) }))
                 } header: {
                     Text("Demo")
                 } footer: {
@@ -88,7 +92,6 @@ struct SettingsView: View {
                    + "this device. This can't be undone — you'll need to connect your "
                    + "providers again.")
             }
-            .onChange(of: store.isDemo) { _, on in demoMode = on }
             .navigationTitle("Settings")
         }
     }

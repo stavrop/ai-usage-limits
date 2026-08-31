@@ -22,7 +22,7 @@ struct ProviderTimelineProvider: AppIntentTimelineProvider {
 
     func placeholder(in context: Context) -> ProviderEntry {
         ProviderEntry(date: Date(), reading: WidgetData.sample,
-                      provider: .anthropic, stale: false)
+                      provider: .anthropic, stale: false, demo: Settings.demoMode)
     }
 
     func snapshot(for configuration: SingleProviderIntent,
@@ -30,7 +30,7 @@ struct ProviderTimelineProvider: AppIntentTimelineProvider {
         let id = configuration.provider.providerID
         return ProviderEntry(date: Date(),
                              reading: UsageCache.load(id) ?? WidgetData.sample,
-                             provider: id, stale: false)
+                             provider: id, stale: false, demo: Settings.demoMode)
     }
 
     func timeline(for configuration: SingleProviderIntent,
@@ -64,7 +64,9 @@ struct ProviderWidgetView: View {
         if let reading = entry.reading {
             switch family {
             case .accessoryInline:
-                Text("\(entry.provider.shortLabel) \(reading.headline?.wholePercent ?? 0)%")
+                // No footer in this family — the marker has to ride along here.
+                Text((entry.demo ? "Sample · " : "")
+                     + "\(entry.provider.shortLabel) \(reading.headline?.wholePercent ?? 0)%")
             case .accessoryCircular:
                 circular(reading)
             case .accessoryRectangular:
@@ -79,7 +81,7 @@ struct ProviderWidgetView: View {
 
     private func circular(_ reading: ProviderUsage) -> some View {
         Gauge(value: reading.headline?.clampedFraction ?? 0) {
-            Text(entry.provider.shortLabel).font(.caption2)
+            Text(entry.demo ? "Demo" : entry.provider.shortLabel).font(.caption2)
         } currentValueLabel: {
             Text("\(reading.headline?.wholePercent ?? 0)")
         }

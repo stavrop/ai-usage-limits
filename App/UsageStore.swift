@@ -108,6 +108,9 @@ final class UsageStore: ObservableObject {
             // a rate-limit or a blip must not sign the user out.
             if error.needsReconnect, !CredentialStore.isConnected(id) {
                 connected.removeAll { $0 == id }
+                // Also the stored list, or the Settings row keeps its green
+                // "Connected" check for a provider that has just signed itself out.
+                realConnected.removeAll { $0 == id }
                 usage[id] = nil
             }
         } catch {
@@ -118,11 +121,13 @@ final class UsageStore: ObservableObject {
     func disconnect(_ id: ProviderID) {
         Settings.forget(id)
         realConnected.removeAll { $0 == id }
+        // Reload before the demo guard: what a widget shows is the demo's
+        // business while it is on, but the credential is gone either way.
+        defer { WidgetCenter.shared.reloadAllTimelines() }
         guard !isDemo else { return }
         usage[id] = nil
         errors[id] = nil
         connected.removeAll { $0 == id }
-        WidgetCenter.shared.reloadAllTimelines()
     }
 
     /// Erases everything and returns the app to a fresh-install state.

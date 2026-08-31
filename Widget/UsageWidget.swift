@@ -15,7 +15,8 @@ struct UsageEntry: TimelineEntry {
 struct UsageTimelineProvider: AppIntentTimelineProvider {
 
     func placeholder(in context: Context) -> UsageEntry {
-        UsageEntry(date: Date(), readings: [WidgetData.sample], choice: .all, stale: false)
+        UsageEntry(date: Date(), readings: [WidgetData.sample], choice: .all,
+                   stale: false, demo: Settings.demoMode)
     }
 
     func snapshot(for configuration: ProviderSelectionIntent,
@@ -24,7 +25,7 @@ struct UsageTimelineProvider: AppIntentTimelineProvider {
         return UsageEntry(date: Date(),
                           readings: cached.isEmpty ? [WidgetData.sample] : cached,
                           choice: configuration.provider,
-                          stale: false)
+                          stale: false, demo: Settings.demoMode)
     }
 
     func timeline(for configuration: ProviderSelectionIntent,
@@ -85,15 +86,20 @@ struct UsageWidgetView: View {
         return best.map { (provider: $0.0, bucket: $0.1) }
     }
 
+    /// The accessory families have no footer to carry the demo marker, so it
+    /// goes in the only text they show — an unlabelled Lock Screen widget would
+    /// otherwise read as the user's real allowance.
     private var inlineText: String {
-        entry.readings
+        let parts = entry.readings
             .compactMap { r in r.headline.map { "\(r.provider.shortLabel) \($0.wholePercent)%" } }
             .joined(separator: " · ")
+        return entry.demo ? "Sample · \(parts)" : parts
     }
 
     private var circular: some View {
         Gauge(value: headline?.bucket.clampedFraction ?? 0) {
-            Text(headline?.provider.shortLabel ?? "—").font(.caption2)
+            Text(entry.demo ? "Demo" : (headline?.provider.shortLabel ?? "—"))
+                .font(.caption2)
         } currentValueLabel: {
             Text("\(headline?.bucket.wholePercent ?? 0)")
         }

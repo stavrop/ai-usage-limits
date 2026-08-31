@@ -22,6 +22,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Settings rows now track *stored credentials* rather than what is on screen, so
   the demo can never make a provider look signed in when it isn't.
 
+### Fixed
+- A provider whose session died mid-use kept its "Connected" checkmark in
+  Settings until the next refresh, because only the displayed list was pruned.
+- The sample account label could appear against a genuinely connected provider
+  when the demo was switched on from Settings.
+- Lock Screen and inline widgets showed sample figures with no marker at all —
+  the "Sample" label lived only in the footer, which those families don't draw.
+- Sample reset times are now anchored to each window's own cycle rather than to
+  "now", so a countdown ticks down and rolls over instead of snapping back to
+  the same value on every refresh.
+
 ## [1.0] - 2026-08-25
 
 ### Added

@@ -84,7 +84,10 @@ struct ProviderConnectRow: View {
             return error.errorDescription ?? "Needs attention"
         }
         if isConnected {
-            return store.usage[provider]?.accountLabel ?? "Connected"
+            // `store.usage` holds sample readings while the demo is on, and the
+            // sample's account label must never be shown against a real login.
+            return store.isDemo ? "Connected"
+                                : (store.usage[provider]?.accountLabel ?? "Connected")
         }
         switch ProviderRegistry.provider(provider).auth {
         case .oauth: return "Sign in with your account"
