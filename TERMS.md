@@ -58,9 +58,10 @@ action a provider takes against your account.
 
 ## 6. Payments and support
 
-The app is free. Optional tips (for example Buy Me a Coffee) are voluntary
-donations, are **not** payment for the app, buy no feature or support obligation,
-and are non-refundable.
+The app is free. It contains no in-app purchases, no subscription and no paid
+tier, and it offers no way to pay the developer. Tips made voluntarily outside the
+app — for example through the project's page on GitHub — are donations, are **not**
+payment for the app, buy no feature or support obligation, and are non-refundable.
 
 ## 7. Changes
 

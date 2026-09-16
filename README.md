@@ -195,10 +195,12 @@ catch) and `.apiKey`.
 ## Support this project
 
 It's free, has no ads, no tracking and no account — and it takes real time to keep
-working, because these endpoints move without warning.
+working, because these endpoints move without warning. **The app itself never asks
+you for anything**; this page is the only place that does.
 
 - ☕ **[Buy me a coffee](https://buymeacoffee.com/stavrop)** — the only way this
-  project earns anything.
+  project earns anything. One-off, no account needed, and nothing in the app changes
+  either way — there is no paid tier to unlock.
 - ⭐ **[Star this repo](https://github.com/stavrop/ai-usage-limits)** — free, and
   it's how other people find it.
 - 🐛 **[Report a bug or request a provider](https://github.com/stavrop/ai-usage-limits/issues)**

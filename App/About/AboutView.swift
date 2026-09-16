@@ -20,9 +20,6 @@ struct AboutView: View {
                 .listRowBackground(Color.clear)
 
                 Section("Support this app") {
-                    Link(destination: Links.coffee) {
-                        Label("Buy me a coffee", systemImage: "cup.and.saucer")
-                    }
                     Link(destination: Links.github) {
                         Label("Star on GitHub", systemImage: "star")
                     }

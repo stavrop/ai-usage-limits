@@ -9,7 +9,6 @@ enum Links {
     static let github = URL(string: "https://github.com/stavrop/ai-usage-limits")!
     static let bug = URL(string: "https://github.com/stavrop/ai-usage-limits/issues/new?labels=bug&template=bug_report.yml")!
     static let feature = URL(string: "https://github.com/stavrop/ai-usage-limits/issues/new?labels=enhancement&template=feature_request.yml")!
-    static let coffee = URL(string: "https://buymeacoffee.com/stavrop")!
 
     /// This app's own policy and terms. Deliberately NOT the macOS app's pages —
     /// those describe reading credential files the user's desktop CLIs already

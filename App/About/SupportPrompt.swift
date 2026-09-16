@@ -17,7 +17,8 @@ struct SupportPromptView: View {
                 .multilineTextAlignment(.center)
 
             Text("It's free, has no ads and collects nothing about you. If it's "
-               + "useful, a coffee or a GitHub star genuinely helps.")
+               + "useful, a star on GitHub genuinely helps — it's how other "
+               + "people find it.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -27,21 +28,12 @@ struct SupportPromptView: View {
 
             VStack(spacing: 12) {
                 Button {
-                    support(Links.coffee)
-                } label: {
-                    Label("Buy me a coffee", systemImage: "cup.and.saucer.fill")
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .controlSize(.large)
-
-                Button {
                     support(Links.github)
                 } label: {
                     Label("Star on GitHub", systemImage: "star.fill")
                         .frame(maxWidth: .infinity)
                 }
-                .buttonStyle(.bordered)
+                .buttonStyle(.borderedProminent)
                 .controlSize(.large)
 
                 Button("No thanks") { dismiss() }
@@ -50,8 +42,8 @@ struct SupportPromptView: View {
             .padding(.horizontal)
             .padding(.bottom, 28)
         }
-        // Showing it schedules the next ask ~a month out; tapping a support
-        // action pushes that to ~a year.
+        // Showing it schedules the next ask ~a month out; tapping through
+        // pushes that to ~a year.
         .onAppear { SupportPromptState.markShown() }
     }
 
