@@ -25,6 +25,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   exponent (`decimal_places`, or `exponent` on the newer `spend` block), which
   the macOS app has always honoured and iOS read as whole currency units. The
   newer `spend` block is now parsed too, and preferred when present.
+- **A reset more than a week out showed only a weekday** — "resets in 25d 3h ·
+  Sat 13:29" reads as *this* Saturday when the real reset is late next month.
+  Past a week the calendar date is spelled out. The whole line is now built from
+  localized date templates instead of a literal `h:mm a`, so a 24-hour region
+  gets 13:29 and a 12-hour one 1:29 PM.
 - **ChatGPT reset times never appeared**, though the macOS app shows them. Two
   causes, both needed: `reset_at` arrives as a Unix epoch *number* and the shared
   date parser accepted only ISO-8601 strings, and the relative fallback was read

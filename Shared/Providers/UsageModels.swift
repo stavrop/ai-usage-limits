@@ -122,11 +122,28 @@ func resetString(_ date: Date?, now: Date = Date()) -> String {
     }
 }
 
-func resetClock(_ date: Date?) -> String {
+/// The wall-clock time a bucket resets, next to the countdown.
+///
+/// A weekday alone is only unambiguous inside the coming week: ChatGPT's monthly
+/// window can reset 25 days out, and "Sat 13:29" then reads as *this* Saturday.
+/// Past a week the calendar date is spelled out.
+///
+/// Built from localized templates rather than a literal pattern, so a 24-hour
+/// region gets 13:29 and a 12-hour one 1:29 PM, with the day and month in the
+/// order that region writes them.
+func resetClock(_ date: Date?, now: Date = Date()) -> String {
     guard let date else { return "" }
+    let cal = Calendar.current
+    let days = cal.dateComponents([.day], from: cal.startOfDay(for: now),
+                                  to: cal.startOfDay(for: date)).day ?? 0
     let df = DateFormatter()
     df.locale = .current
-    df.dateFormat = Calendar.current.isDateInToday(date) ? "h:mm a" : "EEE h:mm a"
+    switch days {
+    case ..<0: df.setLocalizedDateFormatFromTemplate("EEE d MMM jmm")
+    case 0:    df.setLocalizedDateFormatFromTemplate("jmm")
+    case 1..<7: df.setLocalizedDateFormatFromTemplate("EEE jmm")
+    default:   df.setLocalizedDateFormatFromTemplate("EEE d MMM jmm")
+    }
     return df.string(from: date)
 }
 
