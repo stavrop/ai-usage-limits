@@ -103,15 +103,29 @@ providers at any time.
 
 A three-tab bar: **Home** (the provider dashboard), **Settings** (connect /
 disconnect providers, refresh cadence, alert threshold, delete all data) and
-**About** (version, support and feedback links, privacy policy, terms, and a
-"Privacy & connections" screen detailing exactly what each provider is asked for).
+**About** (version, support and feedback links, the tip jar, privacy policy,
+terms, and a "Privacy & connections" screen detailing exactly what each provider
+is asked for).
 
 `App/About/Links.swift` holds every outbound URL.
 
 The support prompt first appears once the app has proved useful — a provider
 connected and at least four cold launches — then at most once a month on a
-jittered 25–40 day schedule. Tapping through to a support link defers the next
-ask by roughly a year.
+jittered 25–40 day schedule. Tapping through to a support link, or leaving a tip,
+defers the next ask by roughly a year.
+
+### Tip jar
+
+`About → Support this app → Leave a tip` offers three **consumable** in-app
+purchases. They unlock nothing: there is no paid tier, no entitlement to check
+and nothing to restore, which is why `TipJar` derives no state from StoreKit —
+consumables never appear in `Transaction.currentEntitlements`. The only thing
+recorded is a local `hasTipped` flag that stops the support prompt asking, and
+**Delete all data** clears it.
+
+`AIUsageLimits.storekit` lets the flow be exercised in the simulator without a
+sandbox account. It is wired into the scheme's **Run** action only, so it never
+reaches a release build.
 
 ## Deleting your data
 
@@ -166,7 +180,7 @@ App/
   Connect/      ASWebAuthenticationSession driver, connect row, API-key sheet
   Dashboard/    provider cards + bars
   Settings/     provider management, preferences, delete all data
-  About/        links, support prompt, "Privacy & connections"
+  About/        links, support prompt, tip jar, "Privacy & connections"
 Shared/         compiled into both app and widget
   Constants.swift        app group / keychain ids + preferences
   LoopbackServer.swift   on-device 127.0.0.1 listener for OAuth redirects
