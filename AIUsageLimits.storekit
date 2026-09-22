@@ -1,0 +1,57 @@
+{
+  "identifier": "AIUsageLimitsTips",
+  "nonRenewingSubscriptions": [],
+  "products": [
+    {
+      "displayPrice": "1.99",
+      "familyShareable": false,
+      "internalID": "TIP0000001",
+      "localizations": [
+        {
+          "description": "A small thank you. Unlocks nothing.",
+          "displayName": "Small tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.stavrop.ailimits.tip.small",
+      "referenceName": "Small tip",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "4.99",
+      "familyShareable": false,
+      "internalID": "TIP0000002",
+      "localizations": [
+        {
+          "description": "A generous thank you. Unlocks nothing.",
+          "displayName": "Nice tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.stavrop.ailimits.tip.medium",
+      "referenceName": "Nice tip",
+      "type": "Consumable"
+    },
+    {
+      "displayPrice": "9.99",
+      "familyShareable": false,
+      "internalID": "TIP0000003",
+      "localizations": [
+        {
+          "description": "A very generous thank you. Unlocks nothing.",
+          "displayName": "Generous tip",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.stavrop.ailimits.tip.large",
+      "referenceName": "Generous tip",
+      "type": "Consumable"
+    }
+  ],
+  "settings": {},
+  "subscriptionGroups": [],
+  "version": {
+    "major": 3,
+    "minor": 0
+  }
+}

@@ -58,10 +58,18 @@ action a provider takes against your account.
 
 ## 6. Payments and support
 
-The app is free. It contains no in-app purchases, no subscription and no paid
-tier, and it offers no way to pay the developer. Tips made voluntarily outside the
-app — for example through the project's page on GitHub — are donations, are **not**
-payment for the app, buy no feature or support obligation, and are non-refundable.
+The app is free and every feature in it is free. There is no subscription, no paid
+tier and nothing to unlock.
+
+The app does contain an optional tip jar: one-off in-app purchases, handled entirely
+by Apple, which you may use to thank the developer. A tip is **voluntary**. It buys
+no feature, no priority and no support obligation, it grants nothing that is not
+already yours, and there is nothing to restore on a new device. Because a tip is a
+consumable purchase of nothing, it is non-refundable by the developer — refund
+requests are handled by Apple under the App Store's own terms.
+
+Tips made outside the app — for example through the project's page on GitHub — are
+donations on the same footing: not payment for the app, and non-refundable.
 
 ## 7. Changes
 

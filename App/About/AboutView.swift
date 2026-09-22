@@ -19,10 +19,20 @@ struct AboutView: View {
                 }
                 .listRowBackground(Color.clear)
 
-                Section("Support this app") {
+                Section {
                     Link(destination: Links.github) {
                         Label("Star on GitHub", systemImage: "star")
                     }
+                    NavigationLink {
+                        TipJarView()
+                    } label: {
+                        Label("Leave a tip", systemImage: "heart")
+                    }
+                } header: {
+                    Text("Support this app")
+                } footer: {
+                    Text("Both are optional and neither unlocks anything — the "
+                       + "app is free and complete as it is.")
                 }
 
                 Section("Feedback") {

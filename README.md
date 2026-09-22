@@ -195,12 +195,13 @@ catch) and `.apiKey`.
 ## Support this project
 
 It's free, has no ads, no tracking and no account — and it takes real time to keep
-working, because these endpoints move without warning. **The app itself never asks
-you for anything**; this page is the only place that does.
+working, because these endpoints move without warning. Nothing in the app is gated
+behind any of the below; there is no paid tier to unlock.
 
-- ☕ **[Buy me a coffee](https://buymeacoffee.com/stavrop)** — the only way this
-  project earns anything. One-off, no account needed, and nothing in the app changes
-  either way — there is no paid tier to unlock.
+- 💛 **Tip jar, in the app** — About › Support this app › Leave a tip. One-off
+  in-app purchases handled by Apple. They unlock nothing; they are just a thank you.
+- ☕ **[Buy me a coffee](https://buymeacoffee.com/stavrop)** — the same thing from
+  outside the App Store, one-off and no account needed.
 - ⭐ **[Star this repo](https://github.com/stavrop/ai-usage-limits)** — free, and
   it's how other people find it.
 - 🐛 **[Report a bug or request a provider](https://github.com/stavrop/ai-usage-limits/issues)**

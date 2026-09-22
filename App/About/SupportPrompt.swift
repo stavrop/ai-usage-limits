@@ -3,6 +3,7 @@ import SwiftUI
 struct SupportPromptView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.openURL) private var openURL
+    @State private var showTipJar = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -18,7 +19,7 @@ struct SupportPromptView: View {
 
             Text("It's free, has no ads and collects nothing about you. If it's "
                + "useful, a star on GitHub genuinely helps — it's how other "
-               + "people find it.")
+               + "people find it. A tip is welcome too, and unlocks nothing.")
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -36,6 +37,15 @@ struct SupportPromptView: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
 
+                Button {
+                    showTipJar = true
+                } label: {
+                    Label("Leave a tip", systemImage: "heart")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.large)
+
                 Button("No thanks") { dismiss() }
                     .padding(.top, 4)
             }
@@ -45,6 +55,9 @@ struct SupportPromptView: View {
         // Showing it schedules the next ask ~a month out; tapping through
         // pushes that to ~a year.
         .onAppear { SupportPromptState.markShown() }
+        .sheet(isPresented: $showTipJar) {
+            TipJarSheet()
+        }
     }
 
     private func support(_ url: URL) {

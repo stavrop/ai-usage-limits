@@ -33,6 +33,7 @@
 		63BF7291A78C8017B19DAAF1 /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B318AF10C3E5AB0AFB6C6B /* OAuthClient.swift */; };
 		6BE21637F71E69EFC5D6DE9A /* OAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B318AF10C3E5AB0AFB6C6B /* OAuthClient.swift */; };
 		6C028ACEDB7204A5A30487B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090CA856A067277DF9D1B298 /* Constants.swift */; };
+		6EA53B01D6D5DEC609C303FE /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40BB47DCFF856629E8817EC /* TipJarView.swift */; };
 		6EC27C55A04186BB32B9199D /* JSONFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 195A36BF4AB5ED03316B655A /* JSONFetch.swift */; };
 		77ED9EDD086BDA70A3866D41 /* APIKeyEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4488BE0CB595849B07A974A /* APIKeyEntryView.swift */; };
 		7DABD099F2DD6FAB4FC24B29 /* AnthropicProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FDD5F68F84346BE52C50278 /* AnthropicProvider.swift */; };
@@ -53,6 +54,7 @@
 		DD003410F5BAD9FCDA979189 /* AIUsageLimitsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EC0AA5BC3EED61D3CFED83 /* AIUsageLimitsApp.swift */; };
 		DD0AC07262CCF3EB404259AC /* SupportPromptState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499117477802E7215AF07FD8 /* SupportPromptState.swift */; };
 		DF79C91D88A706EF241AFD37 /* UsageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 089469D1C7FF90CAA87B85E1 /* UsageProvider.swift */; };
+		E0570D44E269F19663011846 /* TipJar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39B6EE602E6A9FB2FAB0CF1 /* TipJar.swift */; };
 		ED285EB30EB48F7C5CF97384 /* SupportPromptState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499117477802E7215AF07FD8 /* SupportPromptState.swift */; };
 		F3AB815908AB23B7AD08820E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F84F3C52382538B756D9F6B /* AboutView.swift */; };
 		F7FFA950886C2F916A524B39 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5937CD34F9FFF6F7F0B81AAC /* SettingsView.swift */; };
@@ -117,12 +119,14 @@
 		A76BAAB350C81A65E0F0F6B2 /* AuthenticationNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNotesView.swift; sourceTree = "<group>"; };
 		A8BA4BB09864972A7D52F702 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AEA1D815FC1FED6C9BAEB06B /* CursorProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorProvider.swift; sourceTree = "<group>"; };
+		B39B6EE602E6A9FB2FAB0CF1 /* TipJar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJar.swift; sourceTree = "<group>"; };
 		B4488BE0CB595849B07A974A /* APIKeyEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyEntryView.swift; sourceTree = "<group>"; };
 		C615396FC449E16833F0C6B1 /* DemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoData.swift; sourceTree = "<group>"; };
 		CDB2BF9D3157F5AB62AAECF2 /* UsageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageStore.swift; sourceTree = "<group>"; };
 		D2945B1097D249A2CA396C55 /* UsageWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageWidget.swift; sourceTree = "<group>"; };
 		D6EC0AA5BC3EED61D3CFED83 /* AIUsageLimitsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIUsageLimitsApp.swift; sourceTree = "<group>"; };
 		DA0B210CC4708F23F5619061 /* OpenAIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProvider.swift; sourceTree = "<group>"; };
+		F40BB47DCFF856629E8817EC /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		FB95C5A097E64189A7C9E6CC /* ProviderConnector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +253,8 @@
 				A76BAAB350C81A65E0F0F6B2 /* AuthenticationNotesView.swift */,
 				1F71033E10538BE7692176EC /* Links.swift */,
 				3BEFDB3CDD607EA26451D936 /* SupportPrompt.swift */,
+				B39B6EE602E6A9FB2FAB0CF1 /* TipJar.swift */,
+				F40BB47DCFF856629E8817EC /* TipJarView.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -375,6 +381,8 @@
 				F7FFA950886C2F916A524B39 /* SettingsView.swift in Sources */,
 				0F7D446AA7B48A3DCE0D83DF /* SupportPrompt.swift in Sources */,
 				ED285EB30EB48F7C5CF97384 /* SupportPromptState.swift in Sources */,
+				E0570D44E269F19663011846 /* TipJar.swift in Sources */,
+				6EA53B01D6D5DEC609C303FE /* TipJarView.swift in Sources */,
 				36CC6689CBE03EB8012CD372 /* UsageModels.swift in Sources */,
 				DF79C91D88A706EF241AFD37 /* UsageProvider.swift in Sources */,
 				55004EE94B2211967431988F /* UsageStore.swift in Sources */,
@@ -524,7 +532,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = NCZ7646BF7;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -544,7 +552,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -591,7 +599,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = NCZ7646BF7;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -605,7 +613,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

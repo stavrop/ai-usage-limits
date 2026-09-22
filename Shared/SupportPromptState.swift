@@ -16,6 +16,8 @@ enum SupportPromptState {
     private enum Key {
         static let launchCount = "launchCount"
         static let nextAskAt = "supportPromptNextAskAt"
+        /// Set once the user has left a tip, so the app stops asking.
+        static let tipped = "hasTipped"
         /// Pre-1.0 flag: a plain "already shown" boolean, with no schedule.
         static let legacyShown = "supportPromptShown"
     }
@@ -59,6 +61,18 @@ enum SupportPromptState {
     /// Called when the user taps through to a support link.
     static func markSupported() { schedule(in: supportedDays) }
 
+    /// True once a tip has been left. Consumables leave no StoreKit trace to
+    /// read back — `Transaction.currentEntitlements` never reports them — so the
+    /// fact is kept here, on this device only.
+    static var hasTipped: Bool { defaults.bool(forKey: Key.tipped) }
+
+    /// Called after a successful tip. Someone who has already paid should not be
+    /// asked again for a very long time.
+    static func markTipped() {
+        defaults.set(true, forKey: Key.tipped)
+        schedule(in: supportedDays)
+    }
+
     private static func schedule(in days: ClosedRange<Int>) {
         let offset = TimeInterval(Int.random(in: days) * 24 * 3600)
         nextAskAt = Date().addingTimeInterval(offset)
@@ -66,7 +80,7 @@ enum SupportPromptState {
 
     /// Part of "Delete all data" — see Settings.eraseEverything().
     static func reset() {
-        for key in [Key.launchCount, Key.nextAskAt, Key.legacyShown] {
+        for key in [Key.launchCount, Key.nextAskAt, Key.legacyShown, Key.tipped] {
             defaults.removeObject(forKey: key)
         }
     }

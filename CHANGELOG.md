@@ -5,6 +5,28 @@ All notable changes to AI Usage Limits are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1] - unreleased
+
+### Added
+- **Tip jar.** Three one-off in-app purchases (Small / Nice / Generous), reachable
+  from About › Support this app › Leave a tip and from the occasional support
+  prompt. They are consumables that unlock nothing: there is no paid tier, no
+  entitlement to check and nothing to restore, and the screen says so.
+  - The only thing recorded is a local flag saying a tip was left, so the support
+    prompt stops asking. **Settings → Delete all data** clears it.
+  - `AIUsageLimits.storekit` drives the simulator, so the flow can be exercised
+    without a sandbox account. It is a Debug-only scheme setting and never reaches
+    a release build.
+
+### Changed
+- Terms §6 and the privacy policy describe the tip jar; the README's support
+  section leads with it rather than with the external link.
+
+### Notes
+- This replaces the external "Buy me a coffee" link removed in 1.0.1 (build 6)
+  under App Review guideline 3.1.1. A donation path other than In-App Purchase is
+  permitted on only a handful of storefronts, and the app ships to 174.
+
 ## [1.0.1] - 2026-08-30
 
 ### Added

@@ -88,6 +88,14 @@ anywhere else, that erases everything the app holds about you.
 To revoke the app's access at the provider end, use that provider's own account
 or security settings.
 
+## Tips
+
+The app has an optional tip jar. Tips are ordinary in-app purchases: the payment is
+handled entirely by Apple, the app never sees a card number, a name or an email
+address, and the developer receives only Apple's anonymous, aggregate sales reports.
+The single thing the app records is a flag on this device saying a tip was left, so
+it stops asking. **Settings → Delete all data** clears that flag with everything else.
+
 ## Children
 
 The app is not directed at children and collects no personal information from

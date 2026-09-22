@@ -15,8 +15,8 @@ settings:
   base:
     DEVELOPMENT_TEAM: NCZ7646BF7
     SWIFT_VERSION: "5.0"
-    MARKETING_VERSION: "1.0.1"
-    CURRENT_PROJECT_VERSION: "6"
+    MARKETING_VERSION: "1.1"
+    CURRENT_PROJECT_VERSION: "7"
     CODE_SIGN_STYLE: Automatic
 
 targets:
@@ -64,6 +64,9 @@ schemes:
         AIUsageLimits: all
     run:
       config: Debug
+      # Lets the tip jar be exercised in the simulator without sandbox accounts.
+      # Ignored by Release/archive, so it never reaches the App Store build.
+      storeKitConfiguration: AIUsageLimits.storekit
     test:
       config: Debug
     profile:
