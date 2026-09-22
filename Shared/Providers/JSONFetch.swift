@@ -13,8 +13,18 @@ enum JSONFetch {
 
     /// Parses an ISO-8601 string, with or without fractional seconds.
     static func date(_ any: Any?) -> Date? {
-        guard let s = any as? String else { return nil }
-        return isoFractional.date(from: s) ?? iso.date(from: s)
+        // Anthropic sends ISO-8601 strings; ChatGPT sends a Unix epoch as a
+        // number. Parsing only the former silently dropped every ChatGPT reset
+        // time, which the macOS app shows.
+        if let s = any as? String {
+            return isoFractional.date(from: s) ?? iso.date(from: s)
+        }
+        if let n = any as? NSNumber {
+            let seconds = n.doubleValue
+            guard seconds > 0 else { return nil }
+            return Date(timeIntervalSince1970: seconds)
+        }
+        return nil
     }
 
     /// Performs the request and returns a JSON object, mapping transport and

@@ -92,9 +92,15 @@ struct OpenAIProvider: UsageProvider {
         guard let pct = (d["used_percent"] as? NSNumber)?.doubleValue else { return nil }
         let seconds = (d["limit_window_seconds"] as? NSNumber)?.doubleValue ?? 0
         let label = labelOverride ?? Self.windowLabel(seconds)
+        // `reset_at` is an epoch number here, not an ISO string. The relative
+        // fallback the payload actually carries is `reset_after_seconds`;
+        // `resets_in_seconds` has never appeared in a live response and is kept
+        // only in case the field is renamed back.
         var resetsAt = JSONFetch.date(d["reset_at"])
-        if resetsAt == nil, let after = (d["resets_in_seconds"] as? NSNumber)?.doubleValue {
-            resetsAt = Date().addingTimeInterval(after)
+        if resetsAt == nil {
+            let after = (d["reset_after_seconds"] as? NSNumber)?.doubleValue
+                ?? (d["resets_in_seconds"] as? NSNumber)?.doubleValue
+            if let after, after > 0 { resetsAt = Date().addingTimeInterval(after) }
         }
         return Bucket(id: id, label: label,
                       subtitle: seconds > 0 ? Self.windowSubtitle(seconds) : nil,

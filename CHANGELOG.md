@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1] - unreleased
 
 ### Added
-- **Tip jar.** Three one-off in-app purchases (Small / Nice / Generous), reachable
+- **Tip jar.** Three one-off in-app purchases (Buy me a coffee / a pizza /
+  a book), reachable
   from About › Support this app › Leave a tip and from the occasional support
   prompt. They are consumables that unlock nothing: there is no paid tier, no
   entitlement to check and nothing to restore, and the screen says so.
@@ -17,6 +18,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `AIUsageLimits.storekit` drives the simulator, so the flow can be exercised
     without a sandbox account. It is a Debug-only scheme setting and never reaches
     a release build.
+
+### Fixed
+- **Claude pay-as-you-go credits were 100× too large** — "US$0.00 of US$6,000.00"
+  for a $60.00 cap. Both credit blocks report money in minor units scaled by an
+  exponent (`decimal_places`, or `exponent` on the newer `spend` block), which
+  the macOS app has always honoured and iOS read as whole currency units. The
+  newer `spend` block is now parsed too, and preferred when present.
+- **ChatGPT reset times never appeared**, though the macOS app shows them. Two
+  causes, both needed: `reset_at` arrives as a Unix epoch *number* and the shared
+  date parser accepted only ISO-8601 strings, and the relative fallback was read
+  from `resets_in_seconds` where the payload carries `reset_after_seconds`.
 
 ### Changed
 - Terms §6 and the privacy policy describe the tip jar; the README's support

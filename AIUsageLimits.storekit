@@ -9,7 +9,7 @@
       "localizations": [
         {
           "description": "A small thank you. Unlocks nothing.",
-          "displayName": "Small tip",
+          "displayName": "Buy me a coffee",
           "locale": "en_US"
         }
       ],
@@ -24,7 +24,7 @@
       "localizations": [
         {
           "description": "A generous thank you. Unlocks nothing.",
-          "displayName": "Nice tip",
+          "displayName": "Buy me a pizza",
           "locale": "en_US"
         }
       ],
@@ -39,7 +39,7 @@
       "localizations": [
         {
           "description": "A very generous thank you. Unlocks nothing.",
-          "displayName": "Generous tip",
+          "displayName": "Buy me a book",
           "locale": "en_US"
         }
       ],

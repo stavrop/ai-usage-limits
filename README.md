@@ -198,9 +198,10 @@ It's free, has no ads, no tracking and no account — and it takes real time to 
 working, because these endpoints move without warning. Nothing in the app is gated
 behind any of the below; there is no paid tier to unlock.
 
-- 💛 **Tip jar, in the app** — About › Support this app › Leave a tip. One-off
-  in-app purchases handled by Apple. They unlock nothing; they are just a thank you.
-- ☕ **[Buy me a coffee](https://buymeacoffee.com/stavrop)** — the same thing from
+- 💛 **Tip jar, in the app** — About › Support this app › Leave a tip: buy me a
+  coffee, a pizza or a book. One-off in-app purchases handled by Apple. They
+  unlock nothing; they are just a thank you.
+- ☕ **[The same thing on Buy Me a Coffee](https://buymeacoffee.com/stavrop)** —
   outside the App Store, one-off and no account needed.
 - ⭐ **[Star this repo](https://github.com/stavrop/ai-usage-limits)** — free, and
   it's how other people find it.

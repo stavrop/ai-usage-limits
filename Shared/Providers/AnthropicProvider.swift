@@ -95,23 +95,56 @@ struct AnthropicProvider: UsageProvider {
             }
         }
 
-        // `extra_usage` is the pay-as-you-go credit pool the macOS app shows.
-        var credits: CreditInfo?
-        if let extra = obj["extra_usage"] as? [String: Any],
-           (extra["is_enabled"] as? Bool) == true {
-            let used = (extra["used_credits"] as? NSNumber)?.doubleValue
-            let limit = (extra["monthly_limit"] as? NSNumber)?.doubleValue
-            let remaining = (limit != nil && used != nil) ? limit! - used! : nil
-            credits = CreditInfo(used: used, limit: limit, remaining: remaining,
-                                 currency: (extra["currency"] as? String) ?? "USD",
-                                 note: nil)
-        }
+        let credits = Self.parseCredits(obj)
 
         let usage = ProviderUsage(provider: id, buckets: buckets, credits: credits,
                                   accountLabel: CredentialStore.load(id)?.accountLabel,
                                   fetchedAt: Date())
         UsageCache.save(usage)
         return usage
+    }
+
+    /// Pay-as-you-go credits, the way the macOS app reads them.
+    ///
+    /// **Both shapes report money in minor units** — 6000 is $60.00, not $6,000 —
+    /// scaled by an exponent (`decimal_places` on the legacy block, `exponent` on
+    /// the new one), defaulting to 2. Reading them as whole currency units
+    /// inflated every figure by a factor of 100.
+    ///
+    /// The newer `spend` block is preferred; `extra_usage` is the legacy fallback.
+    static func parseCredits(_ obj: [String: Any]) -> CreditInfo? {
+        func major(_ minor: Double, _ exponent: Int) -> Double {
+            minor / pow(10, Double(max(exponent, 0)))
+        }
+
+        if let spend = obj["spend"] as? [String: Any],
+           (spend["enabled"] as? Bool) ?? true,
+           let used = spend["used"] as? [String: Any],
+           let limit = spend["limit"] as? [String: Any],
+           let usedMinor = (used["amount_minor"] as? NSNumber)?.doubleValue,
+           let limitMinor = (limit["amount_minor"] as? NSNumber)?.doubleValue,
+           limitMinor > 0 {
+            let exponent = (limit["exponent"] as? NSNumber)?.intValue
+                ?? (used["exponent"] as? NSNumber)?.intValue ?? 2
+            let u = major(usedMinor, exponent), l = major(limitMinor, exponent)
+            return CreditInfo(used: u, limit: l, remaining: l - u,
+                              currency: (limit["currency"] as? String)
+                                  ?? (used["currency"] as? String) ?? "USD",
+                              note: nil)
+        }
+
+        if let extra = obj["extra_usage"] as? [String: Any],
+           (extra["is_enabled"] as? Bool) == true,
+           let limitMinor = (extra["monthly_limit"] as? NSNumber)?.doubleValue,
+           limitMinor > 0 {
+            let exponent = (extra["decimal_places"] as? NSNumber)?.intValue ?? 2
+            let usedMinor = (extra["used_credits"] as? NSNumber)?.doubleValue ?? 0
+            let u = major(usedMinor, exponent), l = major(limitMinor, exponent)
+            return CreditInfo(used: u, limit: l, remaining: l - u,
+                              currency: (extra["currency"] as? String) ?? "USD",
+                              note: nil)
+        }
+        return nil
     }
 
     /// `utilization` arrives as a float (e.g. 24.0) — keep it a Double so we
