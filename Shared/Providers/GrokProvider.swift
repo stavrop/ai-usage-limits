@@ -20,7 +20,11 @@ struct GrokProvider: UsageProvider {
             // (api-keys:write, conversations:write, workspaces:write …) — none of
             // which a usage monitor should ever ask for.
             scopes: "openid profile email offline_access grok-cli:access api:access",
-            fixedPort: nil,          // loopback is port-agnostic here (RFC 8252)
+            // xAI keeps an exact redirect allowlist, not RFC 8252's any-port rule:
+            // a random port or `localhost` is refused with "redirect_uri does not
+            // match any registered URI" (verified live 2026-10-01).
+            fixedPort: 56121,
+            redirectHost: "127.0.0.1",
             callbackPath: "/callback",
             extraAuthorizeItems: [:],
             exchangeHeaders: [:],
@@ -64,9 +68,11 @@ struct GrokProvider: UsageProvider {
                                   percent: percent, resetsAt: resetsAt))
         }
 
+        // A free account reports both as 0; showing "$0 of $0" would be noise.
         var credits: CreditInfo?
-        if let used = Self.amount(obj["onDemandUsed"]) {
-            let cap = Self.amount(obj["onDemandCap"])
+        let rawCap = Self.amount(obj["onDemandCap"])
+        if let used = Self.amount(obj["onDemandUsed"]), used > 0 || (rawCap ?? 0) > 0 {
+            let cap = rawCap
             credits = CreditInfo(used: used, limit: cap,
                                  remaining: cap.map { $0 - used },
                                  currency: "USD", note: nil)

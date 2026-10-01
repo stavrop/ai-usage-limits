@@ -35,6 +35,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   date parser accepted only ISO-8601 strings, and the relative fallback was read
   from `resets_in_seconds` where the payload carries `reset_after_seconds`.
 
+- **Cursor never showed usage.** The session cookie must be `<user id>%3A%3A<token>`
+  (a bare token gets 401) and the percentages sit under `individualUsage.plan`.
+- **Grok sign-in was refused** with "redirect_uri does not match any registered
+  URI": xAI allowlists exactly `http://127.0.0.1:56121/callback`, not any
+  loopback port. A free Grok account now reads "No limits reported" instead of
+  a "$0 of $0" credits line.
+
 ### Changed
 - Terms §6 and the privacy policy describe the tip jar; the README's support
   section leads with it rather than with the external link.

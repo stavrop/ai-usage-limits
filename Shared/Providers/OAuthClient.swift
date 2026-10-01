@@ -52,7 +52,7 @@ actor OAuthClient {
         let verifier = randomString(32)
         let state = randomString(32)
         let challenge = base64URL(Data(SHA256.hash(data: Data(verifier.utf8))))
-        let redirectURI = "http://localhost:\(port)\(config.callbackPath)"
+        let redirectURI = "http://\(config.redirectHost):\(port)\(config.callbackPath)"
 
         var comps = URLComponents(string: config.authorizeURL)!
         var items = [

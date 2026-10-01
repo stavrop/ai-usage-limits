@@ -20,6 +20,9 @@ struct OAuthConfig: Sendable {
     var tokenURL: String
     var scopes: String
     var fixedPort: UInt16?
+    /// Host written into the redirect URI. xAI allowlists the literal `127.0.0.1`;
+    /// the others register `localhost`.
+    var redirectHost: String = "localhost"
     var callbackPath: String
     /// Extra query items some providers require on /authorize.
     var extraAuthorizeItems: [String: String]
