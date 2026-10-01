@@ -157,7 +157,6 @@ actor OAuthClient {
                            existing: Credential?) async throws -> Credential {
         var req = URLRequest(url: URL(string: config.tokenURL)!)
         req.httpMethod = "POST"
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
         req.setValue("application/json", forHTTPHeaderField: "Accept")
         // Some token hosts sit behind Cloudflare and answer unrecognised clients
         // with 403 "error code: 1010" before the endpoint sees the request.
@@ -165,7 +164,23 @@ actor OAuthClient {
             req.setValue(ua, forHTTPHeaderField: "User-Agent")
         }
         for (k, v) in extraHeaders { req.setValue(v, forHTTPHeaderField: k) }
-        req.httpBody = try JSONSerialization.data(withJSONObject: body)
+        if config.formEncodedTokenRequests {
+            // Only the fields the verified live exchange used: xAI's reference
+            // flow sends neither `state` nor `scope` to the token endpoint.
+            var form = URLComponents()
+            form.queryItems = body
+                .filter { $0.key != "state" && $0.key != "scope" }
+                .sorted { $0.key < $1.key }
+                .map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+            req.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            // URLComponents leaves "+" alone, which a form decoder reads as a space.
+            let encoded = (form.percentEncodedQuery ?? "")
+                .replacingOccurrences(of: "+", with: "%2B")
+            req.httpBody = Data(encoded.utf8)
+        } else {
+            req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            req.httpBody = try JSONSerialization.data(withJSONObject: body)
+        }
 
         let data: Data, resp: URLResponse
         do {

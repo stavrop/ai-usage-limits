@@ -40,7 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Grok sign-in was refused** with "redirect_uri does not match any registered
   URI": xAI allowlists exactly `http://127.0.0.1:56121/callback`, not any
   loopback port. A free Grok account now reads "No limits reported" instead of
-  a "$0 of $0" credits line.
+  a "$0 of $0" credits line. xAI's token endpoint also requires form-encoded
+  bodies (JSON gets HTTP 415).
 
 ### Changed
 - Terms §6 and the privacy policy describe the tip jar; the README's support

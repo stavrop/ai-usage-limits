@@ -25,6 +25,7 @@ struct GrokProvider: UsageProvider {
             // match any registered URI" (verified live 2026-10-01).
             fixedPort: 56121,
             redirectHost: "127.0.0.1",
+            formEncodedTokenRequests: true,
             callbackPath: "/callback",
             extraAuthorizeItems: [:],
             exchangeHeaders: [:],

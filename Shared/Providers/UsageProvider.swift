@@ -23,6 +23,9 @@ struct OAuthConfig: Sendable {
     /// Host written into the redirect URI. xAI allowlists the literal `127.0.0.1`;
     /// the others register `localhost`.
     var redirectHost: String = "localhost"
+    /// Token requests as `application/x-www-form-urlencoded` (RFC 6749) rather
+    /// than JSON. xAI answers JSON with HTTP 415.
+    var formEncodedTokenRequests: Bool = false
     var callbackPath: String
     /// Extra query items some providers require on /authorize.
     var extraAuthorizeItems: [String: String]
