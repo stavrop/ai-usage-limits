@@ -1,3 +1,5 @@
+> The current privacy policy is at https://www.georgiosstavropoulos.com/privacy#ai-usage-limits
+
 # Privacy Policy
 
 **AI Usage Limits** (iOS) — last updated 2026-08-25
