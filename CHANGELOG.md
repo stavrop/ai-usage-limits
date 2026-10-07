@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2] - unreleased
 
+### Changed
+- The privacy policy and terms now live on https://www.georgiosstavropoulos.com (`/privacy#ai-usage-limits`, `/terms#ai-usage-limits`); the old `docs/privacy.html` and `docs/terms.html` redirect there. `docs/build.py` regenerates those pages from `PRIVACY.md` and `TERMS.md`, so re-apply the redirect if you run it.
+
 ### Added
 - **Tip jar.** Three one-off in-app purchases (Buy me a coffee / a pizza /
   a book), reachable
